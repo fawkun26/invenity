@@ -1,0 +1,39 @@
+Time : 13:56:43
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_history_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_history_id,
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp_history
+
+Time : 13:54:26
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_history_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_history_id,
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp_history

@@ -1,0 +1,31 @@
+Time : 21:30:19
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 20:06:16
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type.type_name' in 'field list'
+Raw SQL : SELECT request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS TYPE ON device.type_id = type.type_id
+
+Time : 14:50:51
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:50:51
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:49:41
+SQLSTATE[HY000] [2002] Connection refused
