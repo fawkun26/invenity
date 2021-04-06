@@ -67,7 +67,7 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
             <a href="#bpp_list" id="bpp_list_tab" role="tab" data-toggle="tab" aria-controls="bpp_list" aria-expanded="true"><i class="glyphicon glyphicon-hdd"> </i> BPP</a>
 
           </li>
-          <span class="pull-right"><button type="button" class="btn btn-default btn-sm tombolTambahData" onclick="show_add_bpp()"><i class="glyphicon glyphicon-plus"></i> Add Bpp</button>
+          <span class="pull-right"><button type="button" class="btn btn-default btn-sm tombolTambahData" id="btn-add"><i class="glyphicon glyphicon-plus"></i> Add Bpp</button>
           </span>
           <a href='bpp_history.php' class='btn btn-primary btn-sm pull-right'>Bpp History</a>
         </ul>
@@ -135,40 +135,7 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
           </tbody>
         </table>
         <!--  -->
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report BPP</div>
-            <div class="panel-body">
-              <a href="report_bpp.php?by=bpp_report_id&name=bpp_per_date" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
-
-              <hr>
-              <p>Specific Date Type :</p>
-              <div class="input-group">
-                <select class="form-control chosen-select" name="report_specific_bpp_type" onchange="set_url('bpp_report_id','bpp_per_date',this.value)">
-                  <option value="">- Select Date Type -</option>
-                  <?php
-                  // Get location
-                  $bpp_types     = "";
-                  $bpp_type_list = $bppClass->show_bpp();
-                  foreach ($bpp_type_list as $bpp_type_data) {
-                    $bpp_type_id   = $bpp_type_data["bpp_report_id"];
-                    // $bpp_type_name = $bpp_type_data["request_code"];
-                    // $bpp_types    .= "<option value='$bpp_type_id'>$bpp_type_name</option>";
-
-                    $bpp_type_date = $bpp_type_data["tanggal"];
-                    $bpp_types    .= "<option value='$bpp_type_id'>$bpp_type_date</option>";
-                  }
-                  echo $bpp_types;
-                  ?>
-                </select>
-                <span class="input-group-btn">
-                  <!-- <a href="report_bpp.php?id=" class="btn btn-primary per_date_type" target="">Show</a> -->
-                  <a href="#" class="btn btn-primary bpp_per_date" target="">Show</a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
     </div>
@@ -195,18 +162,13 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
   //include("./include/init_chosen.php");
   include("./include/init_fancybox.php");
 
-  echo "<script type='text/javascript' src='./js/bpp.js'></script>";
+  // echo "<script type='text/javascript' src='./js/bpp.js'></script>";
   include("./include/include_modal_bpp.php");
-  include("./include/include_modal_bpp_edit.php");
-  include("./include/include_modal_bpp_history.php");
-
-  // echo "<script type='text/javascript' src='./js/device_management.js'></script>";
-  // include("./include/include_modal_device_detail.php");
-  // include("./include/include_modal_device.php");
-  // include("./include/include_modal_device_type.php");
+  // include("./include/include_modal_bpp_edit.php");
+  // include("./include/include_modal_bpp_history.php");
 
   ?>
-
+  <script src="js/bpp.js"></script>
   <script type="text/javascript">
     function set_url(by, nama, kriteria) {
       if (kriteria != "") {

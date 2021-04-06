@@ -1,0 +1,348 @@
+Time : 13:31:27
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : INSERT INTO bpp (
+					bpp_id,
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total, 
+					
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date) 
+				VALUES (
+					'',
+					'20210402',
+					'2', 
+					'sdf',
+					'AIR VALVE DOUBLE ALL FLANGE 3"(code=A4)(serial=10)',
+					'asdf',
+					'2',
+					'sdf',
+					'',
+					'',
+					'23',
+					
+					'2021-04-02',
+					'admin', 
+					NOW(), 
+					'admin', 
+					NOW())
+
+Time : 13:26:54
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : INSERT INTO bpp (
+					bpp_id,
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total, 
+					
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date) 
+				VALUES (
+					'',
+					'20210402',
+					'2', 
+					'buah',
+					'AIR VALVE (Single Drat) 1"(code=A5)(serial=1)',
+					'asdfas',
+					'2',
+					'buah',
+					'',
+					'',
+					'2',
+					
+					'2021-04-02',
+					'admin', 
+					NOW(), 
+					'admin', 
+					NOW())
+
+Time : 13:25:51
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : INSERT INTO bpp (
+					bpp_id,
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total, 
+					
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date) 
+				VALUES (
+					'',
+					'20210402',
+					'12', 
+					'buah',
+					'AIR VALVE DOUBLE ALL FLANGE 3"(code=A4)(serial=20)',
+					'Cinta kita melukiskan sejarah',
+					'2',
+					'buah',
+					'',
+					'',
+					'2',
+					
+					'2021-04-02',
+					'admin', 
+					NOW(), 
+					'admin', 
+					NOW())
+
+Time : 11:56:28
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : INSERT INTO bpp (
+					bpp_id,
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total, 
+					
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date) 
+				VALUES (
+					'',
+					'20210402',
+					'45', 
+					'buah',
+					'AIR VALVE (Single Drat) 1"(code=A5)(serial=4)',
+					'Mantep',
+					'33',
+					'buah',
+					'',
+					'',
+					'33',
+					
+					'2021-04-02',
+					'admin', 
+					NOW(), 
+					'admin', 
+					NOW())
+
+Time : 11:09:28
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 11:04:44
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 11:02:45
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:45:23
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:40:05
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:38:22
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:37:34
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:36:50
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:36:46
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:36:35
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 10:34:56
+SQLSTATE[HY000] [2002] Connection refused
