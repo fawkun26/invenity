@@ -17,3 +17,5 @@ Seeing the need for collection of goods that exist within an institution or comp
 ## Development setup
 
 - `composer install`
+- Bikin file `.env` copy dari file `.env.example` 
+
