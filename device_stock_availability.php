@@ -9,7 +9,7 @@ require_once(__DIR__ . '/lib/db.class.php');
 $db        = new DB();
 require_once(__DIR__ . '/class/inventory.class.php');
 $invClass  = new Inventory();
-require_once __DIR__ . '/class/device_stock_availability/dsa.class.php';
+require_once __DIR__ . '/class/device_stock_availability.class.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 $deviceStockAvailability = new DeviceStockAvailability();
@@ -87,7 +87,7 @@ include(__DIR__ . "/include/include_header.php");
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="modal-edit-stock" data-toggle="modal">
-  <form action="class/device_stock_availability/dsa.process.php" method="post" class="form-horizontal">
+  <form action="process/device_stock_availability.php" method="post" class="form-horizontal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

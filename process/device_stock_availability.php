@@ -6,13 +6,13 @@ session_start();
  */
 
  // autolaod packages 
- require_once(__DIR__.'/../../vendor/autoload.php');
+ require_once(__DIR__.'/../vendor/autoload.php');
 
- require_once(__DIR__. '/dsa.class.php');
+ require_once(__DIR__. '/../class/device_stock_availability.class.php');
 
 $dsa = new DeviceStockAvailability();
 $sysClass = new SystemClass();
-$redirectLocation ='../../device_stock_availability.php';
+$redirectLocation ='../device_stock_availability.php';
 /**
  * 
  */

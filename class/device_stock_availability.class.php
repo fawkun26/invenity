@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../../lib/db.class.php';
-require_once __DIR__ . '/../system.class.php';
+require_once __DIR__ . '/../lib/db.class.php';
+require_once __DIR__ . '/system.class.php';
 
 
 class DeviceStockAvailability
