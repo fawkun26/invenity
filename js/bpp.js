@@ -77,8 +77,8 @@ $(document).ready(function ($) {
 	}
 	
 	 $("#device_code_request").on("change", function (e) {
-		const value = e.target.value;
-		$('#device_code_out').val(value);
+		const device_full_code = $(this).find(':selected').data('device');
+		$('#device_code_out').val(device_full_code);
 	});
 });
 

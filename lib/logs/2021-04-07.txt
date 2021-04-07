@@ -1,0 +1,11 @@
+Time : 10:44:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'baru mantep, 12, buah, 135, 12, 2021-04-07, admin, 2021-04-07 10:44:46, 2021-04-' at line 1
+Raw SQL : INSERT INTO bpp(bpp_report_id, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, updated_by, created_date, updated_date) values (20210407, 12, buah, Device baru mantep, 12, buah, 135, 12, 2021-04-07, admin, 2021-04-07 10:44:46, 2021-04-07 10:44:46)
+
+Time : 10:44:07
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', buah, Device baru mantep, 12, buah, 135, 12, 2021-04-07, admin, 2021-04-07 10:' at line 1
+Raw SQL : INSERT INTO bpp(bpp_report_id, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, updated_by, created_date, updated_date) values (20210407, , buah, Device baru mantep, 12, buah, 135, 12, 2021-04-07, admin, 2021-04-07 10:44:07, 2021-04-07 10:44:07)
+
+Time : 10:41:51
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', buah, Device baru mantep, 12, 12, 2021-04-07, admin, 2021-04-07 10:41:51, 2021' at line 1
+Raw SQL : INSERT INTO bpp(bpp_report_id, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, updated_by, created_date, updated_date) values (20210407, , buah, Device baru mantep, 12, 12, 2021-04-07, admin, 2021-04-07 10:41:51, 2021-04-07 10:41:51)

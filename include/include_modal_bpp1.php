@@ -276,9 +276,7 @@
         <button type="submit" class="btn btn-primary">Tambah Data
         </button>
         <input type="hidden" name="action" id="action" value="add_bpp">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-
+        <button type="button" class="btn btn-seconddevice
 
       
       </div>

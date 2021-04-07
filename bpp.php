@@ -51,13 +51,14 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
 <body>
   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
     <?php
-    if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
-      // show info
-      echo "<div class='alert alert-info alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>$_SESSION[save_status]</div>";
+    if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") { ?>
+      <div class='alert alert-info alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><?= $_SESSION['save_status'] ?></div>";
+      <?php 
       // clear save_status session value
       $_SESSION["save_status"] = "";
-    }
-    ?>
+      ?>
+    <?php } ?>
+
 
     <div class="panel panel-primary">
       <div class="panel-body">
