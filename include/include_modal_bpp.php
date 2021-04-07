@@ -30,7 +30,7 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Quantity</label>
 
               <div class="col-sm-6">
-                <input required type="number" class="form-control" placeholder="Quantity" name="request_quantity" id="request_quantity"><br>
+                <input required type="number" class="form-control" placeholder="Quantity" name="request_quantity" id="input_request_quantity"><br>
               </div>
             </div>
             <div class="form-group">
@@ -38,13 +38,13 @@ if (isset($_SESSION["new_out_code"])) {
 
               <div class="col-sm-6">
 
-                <input required id="unit_request" type="text" class="form-control" placeholder="Unit" name="request_unit" id="request_unit"><br>
+                <input required id="input_request_unit" type="text" class="form-control" placeholder="Unit" name="request_unit"><br>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Device Code</label>
               <div class="col-sm-7">
-                <select class="form-control chosen-select" name="request_code" id="device_code_request" required>
+                <select class="form-control chosen-select" name="request_code" id="select_device_code_request" required>
                   <option value="">- Select Code -</option>
                   <?php
                   // Get Semua list yang ada di table device_type
@@ -59,7 +59,7 @@ if (isset($_SESSION["new_out_code"])) {
                     $device_type_name = $device_type_data["type_name"];
                     $device_type_code = $device_type_data["device_code"];
                     $device_type_serial  = $device_type_data["device_serial"];
-                    $device_types    .= "<option value='$device_type_name(code=$device_type_code)(serial=$device_type_serial)'>$device_type_name (code=$device_type_code) (serial=$device_type_serial)</option>";
+                   
                   ?>
                   <option data-device='<?= "$device_type_name (code=$device_type_code) (serial=$device_type_serial)" ?>' value="<?= $device_list_id ?>"><?= "$device_type_name (code=$device_type_code) (serial=$device_type_serial)" ?></option>
                   <?php } ?>
@@ -72,7 +72,7 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Description</label>
 
               <div class="col-sm-6">
-                <input required type="text" class="form-control" placeholder="Description" name="request_description" id="request_description"><br>
+                <input required type="text" class="form-control" placeholder="Description" name="request_description" id="input_request_description"><br>
               </div>
             </div>
           </div>
@@ -88,22 +88,21 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Quantity</label>
 
               <div class="col-sm-6">
-                <input required type="number" class="form-control" placeholder="Quantity" name="out_quantity" id="out_quantity"><br>
+                <input required type="number" class="form-control" placeholder="Quantity" name="out_quantity" id="input_out_quantity"><br>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Unit</label>
 
               <div class="col-sm-6">
-                <input required type="text" class="form-control" placeholder="Unit" name="out_unit" id="out_unit"><br>
+                <input required type="text" class="form-control" placeholder="Unit" name="out_unit" id="input_out_unit"><br>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Device Code</label>
 
               <div class="col-sm-7">
-                <input type="text" disabled class="form-control" id="device_code_out">
-
+                <input type="text" disabled class="form-control" id="input_device_code_out">
               </div>
               <br>
               <br>
@@ -114,7 +113,7 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Total</label>
 
               <div class="col-sm-6">
-                <input required type="number" class="form-control" placeholder="Total" name="out_total" id="out_total"><br>
+                <input required type="number" class="form-control" placeholder="Total" name="out_total" id="input_out_total"><br>
               </div>
             </div>
           </div>

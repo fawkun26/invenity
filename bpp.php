@@ -107,27 +107,17 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
             ?>
               <tr>
                 <td><?= $key + 1 ?></td>
-                <td><?= $bpp["request_quantity"] ?></td>
-                <td><?= $bpp["request_unit"] ?></td>
-                <td><?= $code ?></td>
-                <td><?= $bpp["request_description"] ?></td>
-                <td><?= $bpp["out_quantity"] ?></td>
-                <td><?= $bpp["out_unit"] ?></td>
-                <td><?= $code ?></td>
-                <td><?= $bpp["out_quantity"] ?></td>
-                <td><?= $bpp["tanggal"] ?></td>
-                <input type='hidden' id='l_bpp_history_id_<?= $bpp['bpp_id'] ?>' value='<?= $bpp['bpp_id'] ?>'>
-                <input type='hidden' id='l_bpp_id_<?= $bpp['bpp_id'] ?>' value='<?= $bpp['bpp_id'] ?>'>
-                <input type='hidden' id='l_req_quantity_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["request_quantity"] ?>'>
-                <input type='hidden' id='l_req_unit_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["request_unit"] ?>'>
-                <input type='hidden' id='l_req_code_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["request_code"] ?>'>
-                <input type='hidden' id='l_req_description_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["request_description"] ?>'>
-                <input type='hidden' id='l_o_quantity_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["out_quantity"] ?>'>
-                <input type='hidden' id='l_o_unit_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["out_unit"] ?>'>
-                <input type='hidden' id='l_o_code_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["out_code"] ?>'>
-                <input type='hidden' id='l_o_total_<?= $bpp['bpp_id'] ?>' value='<?= $bpp["out_total"] ?>'>
+                <td class="data-edit request_quantity"><?= $bpp["request_quantity"] ?></td>
+                <td class="data-edit request_unit"><?= $bpp["request_unit"] ?></td>
+                <td class="data-edit device_id" data-device-id="<?= $bpp['device_id'] ?>"><?= $code ?></td>
+                <td class="data-edit request_description"><?= $bpp["request_description"] ?></td>
+                <td class="data-edit out_quantity"><?= $bpp["out_quantity"] ?></td>
+                <td class="data-edit out_unit"><?= $bpp["out_unit"] ?></td>
+                <td class="data-edit"><?= $code ?></td>
+                <td class="data-edit out_total"><?= $bpp["out_total"] ?></td>
+                <td class="data-edit"><?= $bpp["tanggal"] ?></td>
                 <td>
-                  <button type='button' class='glyphicon glyphicon-pencil float-right ml-1 tampilModalEdit' data-toggle='modal' data-target='#formModal' title='Edit Bpp' onclick="show_edit_bpp('<?= $bpp['bpp_id'] ?>')">edit</button>
+                  <button  type='button' class='glyphicon glyphicon-pencil float-right ml-1 show_modal_edit' data-toggle='modal' data-target='#formModal' data-bpp-id="<?= $bpp['bpp_id'] ?>" title='Edit Bpp'>edit</button>
 
                   <a href='process.php?aksi=delete_bpp&id=$bpp_data[bpp_id]; ?' class='badge badge-danger' id='device_id' onclick="return confirm('Anda Yakin Menghapus Data Ini ?')">Hapus</a>
                 </td>
@@ -135,18 +125,8 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
             <?php } ?>
           </tbody>
         </table>
-        <!--  -->
-        
-
       </div>
     </div>
-    <!-- <button type='button' class='btn btn-default' title='Edit Bpp'  onclick=\"('bpp_id')\" ><i class='glyphicon glyphicon-pencil'></i></button> -->
-
-
-    <!-- // delete dengan JavaScript
-    <button type='button' onclick=\"deleteme('$bpp_id')\" name='Delete' value='Delete'>Delete</button>  -->
-
-
 
   </div>
 
@@ -163,23 +143,23 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
   //include("./include/init_chosen.php");
   include("./include/init_fancybox.php");
 
-  // echo "<script type='text/javascript' src='./js/bpp.js'></script>";
   include("./include/include_modal_bpp.php");
   // include("./include/include_modal_bpp_edit.php");
-  // include("./include/include_modal_bpp_history.php");
 
   ?>
   <script src="js/bpp.js"></script>
   <script type="text/javascript">
-    function set_url(by, nama, kriteria) {
-      if (kriteria != "") {
-        $("." + nama).attr('href', 'report_bpp.php?by=' + by + '&name=' + nama + '&criteria=' + kriteria);
-        $("." + nama).attr('target', '_blank');
-      } else {
-        $("." + nama).attr('href', '#');
-        $("." + nama).attr('target', '');
+  $(document).ready(function () {
+      function set_url(by, nama, kriteria) {
+        if (kriteria != "") {
+          $("." + nama).attr('href', 'report_bpp.php?by=' + by + '&name=' + nama + '&criteria=' + kriteria);
+          $("." + nama).attr('target', '_blank');
+        } else {
+          $("." + nama).attr('href', '#');
+          $("." + nama).attr('target', '');
+        }
       }
-    }
+    })
   </script>
 </body>
 
