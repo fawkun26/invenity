@@ -59,6 +59,8 @@ if ($_POST['action'] === 'add_bpp') {
     $nomor = $bpp_report_id;
     $created_at = $created_date;
 
+    $db->beginTransaction();
+
     $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$device_id'");
     $old_device_quantity = $old_device_quantity[0]['device_quantity'];
 
@@ -69,6 +71,9 @@ if ($_POST['action'] === 'add_bpp') {
     $resultBppHistory = $db->query("INSERT INTO bpp_history(nomor, created_at) values('$nomor', '$created_at')");
 
     $resultDeviceList = $db->query("UPDATE device_list set device_quantity='$new_device_quantity' where device_id='$device_id'");
+
+    $db->commitTransaction();
+
 
     $_SESSION['save_status'] = 'Add BPP Sukses!';
 

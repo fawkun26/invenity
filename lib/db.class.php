@@ -273,4 +273,19 @@ class DB
 
 		return $exception;
 	}
+
+	/**
+	 * Begin transaction
+	 */
+	public function beginTransaction() 
+	{
+		$this->pdo->beginTransaction();
+	}
+	/**
+	 * Commit transaction
+	 */
+	public function commitTransaction()
+	{
+		$this->pdo->commit();
+	}
 }
