@@ -81,7 +81,7 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
         <?php
 
         $bpp_s = $bppClass->show_bpp_new();
-        $bpp_histories = $bppClass->show_bpp_history();
+        // $bpp_histories = $bppClass->show_bpp_history(); // <== ada masalah
 
         // dd($bpp_s);
         ?>

@@ -1,3 +1,54 @@
+Time : 14:55:47
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list'
+Raw SQL : SELECT id, nomor, created_at FROM bpp_history
+
+Time : 14:53:07
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '20210407' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor, created_at) values('20210407', '2021-04-07 02:53:07')
+
+Time : 14:50:41
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '20210407' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor, created_at) values('20210407', '2021-04-07 02:50:41')
+
+Time : 14:49:14
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '20210407' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor, created_at) values('20210407', '2021-04-07 02:49:14')
+
+Time : 14:47:41
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '20210407' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor, created_at) values('20210407', '2021-04-07 02:47:41')
+
+Time : 14:44:08
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '20210407' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor, created_at) values('20210407', '2021-04-07 02:44:08')
+
+Time : 14:38:31
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list'
+Raw SQL : SELECT id, nomor, created_at FROM bpp_history
+
+Time : 14:38:23
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list'
+Raw SQL : SELECT id, nomor, created_at FROM bpp_history
+
+Time : 14:03:34
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
 Time : 10:44:46
 SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'baru mantep, 12, buah, 135, 12, 2021-04-07, admin, 2021-04-07 10:44:46, 2021-04-' at line 1
 Raw SQL : INSERT INTO bpp(bpp_report_id, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, updated_by, created_date, updated_date) values (20210407, 12, buah, Device baru mantep, 12, buah, 135, 12, 2021-04-07, admin, 2021-04-07 10:44:46, 2021-04-07 10:44:46)
