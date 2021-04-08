@@ -78,6 +78,8 @@ function show_edit_bpp(bpp_id, data) {
 }
 
 $('.show_modal_edit').click(function(e) {
+  $('#input_action').val('edit_bpp');
+  $('#btn_submit').text('Update data');
   const bpp_id = e.target.dataset.bppId;
   const $tr = $(this).closest('tr');
   const request_quantity = $tr.find('.request_quantity').text();
@@ -97,6 +99,9 @@ $('.show_modal_edit').click(function(e) {
     out_unit,
     out_total
   }
+  $('#input_bpp_id').val(bpp_id);
+  $('#input_old_out_quantity').val(out_quantity);
+  $('#input_old_device_id').val(device_id);
   show_edit_bpp(bpp_id, data);
 });
 

@@ -25,7 +25,9 @@ if (isset($_SESSION["new_out_code"])) {
             <legend>
               <h6 class="panel-heading">Request</h6>
             </legend>
-
+            <input type="hidden" id="input_bpp_id" name="bpp_id">
+            <input type="hidden" id="input_old_out_quantity" name="old_out_quantity">
+            <input type="hidden" id="input_old_device_id" name="old_device_id">
             <div class="form-group">
               <label class="control-label col-sm-2">Quantity</label>
 
@@ -120,9 +122,10 @@ if (isset($_SESSION["new_out_code"])) {
 
 
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Tambah Data
+            <button type="submit" class="btn btn-primary" id="btn_submit">
+              Tambah Data
             </button>
-            <input type="hidden" name="action" id="action" value="add_bpp">
+            <input type="hidden" name="action" id="input_action" value="add_bpp">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
