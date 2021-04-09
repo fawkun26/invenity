@@ -1,0 +1,41 @@
+Time : 13:29:55
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:55
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:55
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:55
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:54
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:54
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:54
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:54
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:54
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:53
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:53
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:53
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:51
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 13:29:06
+SQLSTATE[HY000] [2002] Connection refused

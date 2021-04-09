@@ -39,6 +39,7 @@
 			<!-- <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css"> -->
 			<link rel="stylesheet" type="text/css" href="./assets/plugins/pace/pace.css">
 			<link rel="icon" href="./assets/images/favicon.png">
+			<link rel="stylesheet" href="./assets/css/style.css">
 		</head>
 		<body background="./assets/images/backgrounds/<?php if ($invClass->setting_data("body_background")!="") { echo $invClass->setting_data("body_background"); } else {echo "symphony.png";} ?>">
 			<div class="docs-header">

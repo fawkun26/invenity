@@ -143,3 +143,60 @@ if ($_POST['action'] === 'edit_bpp') {
   header("Location: $redirectLocation");
   die();
 }
+
+// === Delete BPP
+if ($_POST['action'] === 'delete_bpp') {
+  $is_rollback = ($_POST['is_rollback'] == "true") ? true : false ;
+  $bpp_id = $_POST['bpp_id'];
+  $device_id = $_POST['device_id'];
+  
+  if ($is_rollback) {
+    $out_quantity = $_POST['out_quantity'];
+    /**
+     * delete bpp
+     * update device_quantity
+     * check apakah ada masih ada BPP pada tanggal sekarang jika tidak ada maka hapus bpp history
+     */
+    $db->beginTransaction();
+    
+    $result_bpp_history_nomor = $db->query("SELECT bpp_history_nomor FROM bpp WHERE bpp_id = '$bpp_id'");
+    $bpp_history_nomor = $result_bpp_history_nomor[0]['bpp_history_nomor'];
+    $count_bpp_history_nomor = $db->query("SELECT count(*) from bpp where bpp_history_nomor = '$bpp_history_nomor'")[0]['count(*)'];
+
+    $resultDeleteBPP = $db->query("DELETE FROM bpp WHERE bpp_id = '$bpp_id'");
+
+    $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$device_id'")[0]['device_quantity'];
+    $new_device_quantity = $old_device_quantity + $out_quantity;
+    $resultRollbackDeviceQuantity = $db->query("UPDATE device_list SET
+      device_quantity = '$new_device_quantity'
+      WHERE device_id = '$device_id'
+    ");
+
+    if ($count_bpp_history_nomor <= 1) {
+      $db->query("DELETE FROM bpp_history where nomor = '$bpp_history_nomor'");
+    } else {
+      // jangan hapus apapun dari bpp_history;
+    }
+    $db->commitTransaction();
+  } else {
+    $db->beginTransaction();
+
+    $result_bpp_history_nomor = $db->query("SELECT bpp_history_nomor FROM bpp WHERE bpp_id = '$bpp_id'");
+    $bpp_history_nomor = $result_bpp_history_nomor[0]['bpp_history_nomor'];
+    $count_bpp_history_nomor = $db->query("SELECT count(*) from bpp where bpp_history_nomor = '$bpp_history_nomor'")[0]['count(*)'];
+    
+    $resultDeleteBPP = $db->query("DELETE FROM bpp WHERE bpp_id = '$bpp_id'");
+
+    if ($count_bpp_history_nomor <= 1) {
+      $db->query("DELETE FROM bpp_history where nomor = '$bpp_history_nomor'");
+    } else {
+      // jangan hapus apapun dari bpp_history;
+    }
+
+    $db->commitTransaction();
+  }
+
+  $redirectLocation = '../bpp.php';
+  header("Location: $redirectLocation");
+  die();
+}

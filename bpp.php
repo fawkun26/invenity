@@ -117,9 +117,8 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
                 <td class="data-edit out_total"><?= $bpp["out_total"] ?></td>
                 <td class="data-edit"><?= $bpp["tanggal"] ?></td>
                 <td>
-                  <button  type='button' class='glyphicon glyphicon-pencil float-right ml-1 show_modal_edit' data-toggle='modal' data-target='#formModal' data-bpp-id="<?= $bpp['bpp_id'] ?>" title='Edit Bpp'>edit</button>
-
-                  <a href='process.php?aksi=delete_bpp&id=$bpp_data[bpp_id]; ?' class='badge badge-danger' id='device_id' onclick="return confirm('Anda Yakin Menghapus Data Ini ?')">Hapus</a>
+                  <button  type='button' class='btn btn-sm btn-info glyphicon glyphicon-pencil float-right ml-1 show_modal_edit' data-toggle='modal' data-target='#formModal' data-bpp-id="<?= $bpp['bpp_id'] ?>" title='Edit Bpp'>edit</button>
+                  <button class="btn btn-sm btn-danger btn-delete-bpp glyphicon glyphicon-trash float-right ml-1" data-toggle="modal" data-target="#modal_delete" data-bpp-id="<?= $bpp['bpp_id'] ?>" data-device-id="<?= $bpp['device_id'] ?>" data-out-quantity="<?= $bpp['out_quantity'] ?>" data-no="<?= $key + 1 ?>" data-diminta="<?= $bpp['request_quantity'] ?>" data-satuan="<?= $bpp['request_unit'] ?>" data-uraian="<?= $bpp['request_description'] ?>" data-kode-barang='<?= $code ?>' data-tanggal="<?= $bpp['tanggal'] ?>">Delete</button>
                 </td>
               </tr>
             <?php } ?>
@@ -137,14 +136,12 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
   // get footer
   include("./include/include_footer.php");
   // get plugins
-  include("./include/init_tinymce.php");
+  // include("./include/init_tinymce.php");
   include("./include/init_datatables.php");
-  include("./include/init_validetta.php");
-  //include("./include/init_chosen.php");
-  include("./include/init_fancybox.php");
-
+  // include("./include/init_validetta.php");
+  // include("./include/init_fancybox.php");
   include("./include/include_modal_bpp.php");
-  // include("./include/include_modal_bpp_edit.php");
+  include('./include/include_modal_bpp_delete.php');
 
   ?>
   <script src="js/bpp.js"></script>

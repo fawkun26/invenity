@@ -105,3 +105,26 @@ $('.show_modal_edit').click(function(e) {
   show_edit_bpp(bpp_id, data);
 });
 
+// === Code untuk modal delete BPP 
+$('[data-toggle="tooltip"]').tooltip()
+
+$('.btn-delete-bpp').click(function(e) {
+  const bpp_id = $(this).data('bpp-id');
+  const device_id = $(this).data('device-id');
+  const out_quantity = $(this).data('out-quantity');
+  const $inputBppIds = $('[data-holder="input_delete_bpp_id"]');
+  const $inputDeviceIds = $('[data-holder="input_delete_device_id"]');
+  const $inputOutQuantities = $('[data-holder="input_delete_out_quantity"]');
+  $inputBppIds.val(bpp_id);
+  $inputDeviceIds.val(device_id);
+  $inputOutQuantities.val(out_quantity);
+
+  $('[data-holder="span-no"]').text($(this).data('no'));
+  $('[data-holder="span-diminta"]').text($(this).data('diminta'));
+  $('[data-holder="span-satuan"]').text($(this).data('satuan'));
+  $('[data-holder="span-kode-barang"]').text($(this).data('kode-barang'));
+  $('[data-holder="span-uraian"]').text($(this).data('uraian'));
+  $('[data-holder="span-dikeluarkan"]').text($(this).data('out-quantity'));
+  $('[data-holder="span-tanggal"]').text($(this).data('tanggal'));
+})
+

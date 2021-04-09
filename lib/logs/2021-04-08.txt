@@ -1,0 +1,12 @@
+Time : 13:19:31
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'device_quantity' in 'field list'
+Raw SQL : UPDATE bpp SET
+      device_quantity = '25'
+
+Time : 13:17:55
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'device_quantity' in 'field list'
+Raw SQL : UPDATE bpp SET
+      device_quantity = '25'
+
+Time : 11:12:36
+SQLSTATE[HY000] [2002] Connection refused
