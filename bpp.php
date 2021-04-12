@@ -77,10 +77,10 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane fade active in" id="bpp_list" aria-labelledby="bpp_list_tab">
 
-        <!--  -->
+        <!-- disisni -->
         <?php
 
-        $bpp_s = $bppClass->show_bpp_new();
+        $bpp_s = $bppClass->get_all_bpp();
         // $bpp_histories = $bppClass->show_bpp_history(); // <== ada masalah
 
         // dd($bpp_s);
@@ -124,6 +124,33 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
             <?php } ?>
           </tbody>
         </table>
+
+        <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report BPP</div>
+                <div class="panel-body">
+                  <!-- <a href="report_lpb.php?by=lpb_report_id&name=lpb_per_date" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a> -->
+                  <a target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
+                  <hr>
+                  <p>Specific Date Type :</p>
+                  <div class="input-group">
+                  <!-- get all distinct tanggal from bpp -->
+                  <?php $tanggal_s = $bppClass->get_all_distinct_tanggal(); ?>
+                    <select class="form-control chosen-select">
+                      <option>- Select Date Type -</option>
+                      <?php foreach($tanggal_s as $key => $tanggal) { ?>
+                        <option value="<?= $tanggal['tanggal'] ?>"><?= $tanggal['tanggal'] ?></option>
+                      <?php } ?>
+                    </select>
+                    <span class="input-group-btn">
+                      <a href="#" class="btn btn-primary lpb_per_date" target="">Show</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+				  </div>
       </div>
     </div>
 
@@ -136,10 +163,7 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
   // get footer
   include("./include/include_footer.php");
   // get plugins
-  // include("./include/init_tinymce.php");
   include("./include/init_datatables.php");
-  // include("./include/init_validetta.php");
-  // include("./include/init_fancybox.php");
   include("./include/include_modal_bpp.php");
   include('./include/include_modal_bpp_delete.php');
 
