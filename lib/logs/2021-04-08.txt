@@ -1,0 +1,208 @@
+Time : 15:11:50
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total,
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:11:43
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:11:16
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total,
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:11:13
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:08:39
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					device_id,
+					out_total,
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:08:35
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:08:29
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:07:50
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bpp_report_id' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:04:24
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 15:04:18
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp
+
+Time : 14:07:39
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_code' in 'field list'
+Raw SQL : SELECT 
+					bpp_id, 
+					bpp_report_id,
+					request_quantity, 
+					request_unit,
+					request_code,
+					request_description,
+					out_quantity,
+					out_unit,
+					out_code,
+					out_total, 
+					tanggal,
+					created_by, 
+					created_date, 
+					updated_by, 
+					updated_date FROM bpp

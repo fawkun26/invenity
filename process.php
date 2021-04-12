@@ -36,39 +36,39 @@ $lpbClass  = new LpbClass();
 
 
 
-$aksi = $_GET['aksi'];
+// $aksi = $_GET['aksi'];
 
-if ($aksi == "delete_bpp") {
-	$bpp_id = $_GET['id'];
-	$delete_bpp = $bppClass->delete_bpp($bpp_id);
-	//$delete_bpp = $bppClass->delete_bpp($_POST, $_FILES);
-	// break
-	$dbpp_break   = explode("|", $delete_bpp);
-	$dbpp_process = $dbpp_break[0];
-	$dbpp_notif   = $dbpp_break[1];
-	if ($dbpp_process > 0) {
-		$_SESSION['save_status'] = "Error, failed to deleted data! $dbpp_notif";
-	} else {
-		$_SESSION['save_status'] = "Successfully deleted! $dbpp_notif";
-	}
-	header("Location: ./bpp.php");
-	die();
-} elseif ($aksi == "delete_lpb") {
-	$lpb_id = $_GET['id'];
-	$delete_lpb = $lpbClass->delete_lpb($lpb_id);
-	//$delete_bpp = $bppClass->delete_bpp($_POST, $_FILES);
-	// break
-	$dlpb_break   = explode("|", $delete_lpb);
-	$dlpb_process = $dlpb_break[0];
-	$dlpb_notif   = $dlpb_break[1];
-	if ($dlpb_process > 0) {
-		$_SESSION['save_status'] = "Error, failed to deleted data! $dlpb_notif";
-	} else {
-		$_SESSION['save_status'] = "Successfully deleted data! $dlpb_notif";
-	}
-	header("Location: ./lpb.php");
-	die();
-}
+// if ($aksi == "delete_bpp") {
+// 	$bpp_id = $_GET['id'];
+// 	$delete_bpp = $bppClass->delete_bpp($bpp_id);
+// 	//$delete_bpp = $bppClass->delete_bpp($_POST, $_FILES);
+// 	// break
+// 	$dbpp_break   = explode("|", $delete_bpp);
+// 	$dbpp_process = $dbpp_break[0];
+// 	$dbpp_notif   = $dbpp_break[1];
+// 	if ($dbpp_process > 0) {
+// 		$_SESSION['save_status'] = "Error, failed to deleted data! $dbpp_notif";
+// 	} else {
+// 		$_SESSION['save_status'] = "Successfully deleted! $dbpp_notif";
+// 	}
+// 	header("Location: ./bpp.php");
+// 	die();
+// } elseif ($aksi == "delete_lpb") {
+// 	$lpb_id = $_GET['id'];
+// 	$delete_lpb = $lpbClass->delete_lpb($lpb_id);
+// 	//$delete_bpp = $bppClass->delete_bpp($_POST, $_FILES);
+// 	// break
+// 	$dlpb_break   = explode("|", $delete_lpb);
+// 	$dlpb_process = $dlpb_break[0];
+// 	$dlpb_notif   = $dlpb_break[1];
+// 	if ($dlpb_process > 0) {
+// 		$_SESSION['save_status'] = "Error, failed to deleted data! $dlpb_notif";
+// 	} else {
+// 		$_SESSION['save_status'] = "Successfully deleted data! $dlpb_notif";
+// 	}
+// 	header("Location: ./lpb.php");
+// 	die();
+// }
 
 if (isset($_POST["action"])) {
 	$action = $_POST["action"];

@@ -45,7 +45,34 @@ if ($_POST['action'] === 'add_bpp') {
   $db->beginTransaction();
 
 
-  $resultBpp = $db->query("INSERT INTO bpp(bpp_history_nomor, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, created_by, created_date, updated_by, updated_date) values ('$bpp_history_nomor', '$request_quantity', '$request_unit', '$request_description', '$out_quantity', '$out_unit', '$device_id', '$out_total', '$tanggal', '$created_by', '$created_date', '$updated_by', '$updated_date')");
+  $resultBpp = $db->query("INSERT INTO bpp(
+    bpp_history_nomor, 
+    request_quantity, 
+    request_unit, 
+    request_description, 
+    out_quantity, 
+    out_unit, 
+    device_id, 
+    out_total, 
+    tanggal, 
+    created_by, 
+    created_date, 
+    updated_by, 
+    updated_date) 
+    values (
+      '$bpp_history_nomor', 
+      '$request_quantity', 
+      '$request_unit', 
+      '$request_description', 
+      '$out_quantity', 
+      '$out_unit', 
+      '$device_id', 
+      '$out_total', 
+      '$tanggal', 
+      '$created_by', 
+      '$created_date', 
+      '$updated_by', 
+      '$updated_date')");
 
   $insertedBppId = $db->lastInsertId();
 
@@ -53,18 +80,38 @@ if ($_POST['action'] === 'add_bpp') {
   // Check dulu apakah bppHistory udah ada
   // - Kalo belum maka insert
   // - Kalo udah ada maka tidak insert
-  $isBppHistoryExists = (count($db->query("SELECT nomor FROM bpp_history WHERE nomor = '$bpp_history_nomor'")) > 0) ? true : false;
+  $isBppHistoryExists = (count($db->query("SELECT 
+  nomor 
+  FROM 
+  bpp_history 
+  WHERE 
+  nomor = '$bpp_history_nomor'")) > 0) ? true : false;
   if ($isBppHistoryExists) {
     // Jangan bikin baru
   } else {
-    $resultBppHistory = $db->query("INSERT INTO bpp_history(nomor, created_at) values('$nomor', '$created_at')");
+    $resultBppHistory = $db->query("INSERT INTO 
+    bpp_history(nomor, created_at) 
+    values(
+      '$nomor', 
+      '$created_at')"
+      );
   }
 
-  $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$device_id'");
+  $old_device_quantity = $db->query("SELECT 
+  device_quantity 
+  from 
+  device_list 
+  where 
+  device_id='$device_id'");
   $old_device_quantity = $old_device_quantity[0]['device_quantity'];
   $new_device_quantity = $old_device_quantity - $out_quantity;
 
-  $resultDeviceList = $db->query("UPDATE device_list set device_quantity='$new_device_quantity' where device_id='$device_id'");
+  $resultDeviceList = $db->query("UPDATE 
+  device_list 
+  set 
+  device_quantity='$new_device_quantity' 
+  where 
+  device_id='$device_id'");
 
   $db->commitTransaction();
 

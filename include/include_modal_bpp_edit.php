@@ -23,37 +23,37 @@
                 <label class="control-label col-sm-4">Quantity</label>
                 <div class="col-sm-9">
                   <input required type="number" class="form-control" placeholder="Quantity" name="req_quantity" id="req_quantity" <?php if (isset($_SESSION["new_req_quantity"])) {
-                                                                                                                                    echo " value='" . $_SESSION["new_req_quantity"] . "'";
-                                                                                                                                    unset($_SESSION['new_req_quantity']);
-                                                                                                                                  } ?>><br>
+                 echo " value='" . $_SESSION["new_req_quantity"] . "'";
+               unset($_SESSION['new_req_quantity']);
+             } ?>><br>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-4">Unit</label>
                 <div class="col-sm-9">
                   <input required type="text" class="form-control" placeholder="Unit" name="req_unit" id="req_unit" <?php if (isset($_SESSION["new_req_unit"])) {
-                                                                                                                      echo " value='" . $_SESSION["new_req_unit"] . "'";
-                                                                                                                      unset($_SESSION['new_req_unit']);
-                                                                                                                    } ?>><br>
+  echo " value='" . $_SESSION["new_req_unit"] . "'";
+  unset($_SESSION['new_req_unit']);
+} ?>><br>
                 </div>
               </div>
               <div class="input-group">
                 <label class="control-label col-sm-4">Device Code</label>
                 <!-- <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="Device Code" name="req_code" id="req_code" <?php if (isset($_SESSION["new_req_code"])) {
-                                                                                                                          echo " value='" . $_SESSION["new_req_code"] . "'";
-                                                                                                                          unset($_SESSION['new_req_code']);
-                                                                                                                        } ?>><br>
+         echo " value='" . $_SESSION["new_req_code"] . "'";
+            unset($_SESSION['new_req_code']);
+   } ?>><br>
                         </div> -->
                 <div class="col-sm-9">
                   <!-- <input type="text" class="form-control" placeholder="Device Code" name="o_code" id="o_code" <?php if (isset($_SESSION["new_o_code"])) {
-                                                                                                                      echo " value='" . $_SESSION["new_o_code"] . "'";
-                                                                                                                      unset($_SESSION['new_o_code']);
-                                                                                                                    } ?>><br> -->
+  echo " value='" . $_SESSION["new_o_code"] . "'";
+     unset($_SESSION['new_o_code']);
+} ?>><br> -->
                   <select class="form-control chosen-select" name="req_code" id="req_code" required <?php if (isset($_SESSION["new_o_code"])) {
-                                                                                                      echo " value='" . $_SESSION["new_req_code"] . "'";
-                                                                                                      unset($_SESSION['new_req_code']);
-                                                                                                    } ?> onchange="set_url('type_id','device_per_name',this.value)">
+  echo " value='" . $_SESSION["new_req_code"] . "'";
+   unset($_SESSION['new_req_code']);
+    } ?> onchange="set_url('type_id','device_per_name',this.value)">
                     <option value="">- Select Code -</option>
                     <?php
 
@@ -79,16 +79,16 @@
               </div>
               <br>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="control-label col-sm-4">Description</label>
                 <div class="col-sm-9">
                   <input required type="text" class="form-control" placeholder="Description" name="req_description" id="req_description" <?php if (isset($_SESSION["new_req_description"])) {
-                                                                                                                                            echo " value='" . $_SESSION["new_req_description"] . "'";
-                                                                                                                                            unset($_SESSION['new_req_description']);
-                                                                                                                                          } ?>><br>
+                                echo " value='" . $_SESSION["new_req_description"] . "'";
+                            unset($_SESSION['new_req_description']);
+                     } ?>><br>
                 </div>
               </div>
-            </div>
+            </div> -->
 
 
             <div class="box-header with-border">
@@ -103,30 +103,30 @@
                 <div class="col-sm-9">
                   <input required type="number" class="form-control" placeholder="Quantity" name="o_quantity" id="o_quantity" <?php if (isset($_SESSION["new_o_quantity"])) {
                                                                                                                                 echo " value='" . $_SESSION["new_o_quantity"] . "'";
-                                                                                                                                unset($_SESSION['new_o_quantity']);
-                                                                                                                              } ?>><br>
+            unset($_SESSION['new_o_quantity']);
+        } ?>><br>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-4">Unit</label>
                 <div class="col-sm-9">
                   <input required type="text" class="form-control" placeholder="Unit" name="o_unit" id="o_unit" <?php if (isset($_SESSION["new_o_unit"])) {
-                                                                                                                  echo " value='" . $_SESSION["new_o_unit"] . "'";
-                                                                                                                  unset($_SESSION['new_o_unit']);
-                                                                                                                } ?>><br>
+        echo " value='" . $_SESSION["new_o_unit"] . "'";
+         unset($_SESSION['new_o_unit']);
+         } ?>><br>
                 </div>
               </div>
               <div class="input-group">
                 <label class="control-label col-sm-4">Device Code</label>
                 <div class="col-sm-9">
                   <!-- <input type="text" class="form-control" placeholder="Device Code" name="o_code" id="o_code" <?php if (isset($_SESSION["new_o_code"])) {
-                                                                                                                      echo " value='" . $_SESSION["new_o_code"] . "'";
-                                                                                                                      unset($_SESSION['new_o_code']);
-                                                                                                                    } ?>><br> -->
+ echo " value='" . $_SESSION["new_o_code"] . "'";
+   unset($_SESSION['new_o_code']);
+     } ?>><br> -->
                   <select required class="form-control chosen-select" name="o_code" id="o_code" <?php if (isset($_SESSION["new_o_code"])) {
-                                                                                                  echo " value='" . $_SESSION["new_o_code"] . "'";
-                                                                                                  unset($_SESSION['new_o_code']);
-                                                                                                } ?>onchange="set_url('type_id','device_per_name',this.value)">
+   echo " value='" . $_SESSION["new_o_code"] . "'";
+       unset($_SESSION['new_o_code']);
+     } ?>onchange="set_url('type_id','device_per_name',this.value)">
                     <option value="">- Select Code -</option>
 
                     <?php
@@ -159,13 +159,13 @@
                 <label class="control-label col-sm-6">Input Again Device Code</label>
                 <div class="col-sm-9">
                   <!-- <input type="text" class="form-control" placeholder="Device Code" name="o_code" id="o_code" <?php if (isset($_SESSION["new_o_code"])) {
-                                                                                                                      echo " value='" . $_SESSION["new_o_code"] . "'";
-                                                                                                                      unset($_SESSION['new_o_code']);
-                                                                                                                    } ?>><br> -->
+       echo " value='" . $_SESSION["new_o_code"] . "'";
+         unset($_SESSION['new_o_code']);
+        } ?>><br> -->
                   <select required class="form-control chosen-select" name="dev_id" id="dev_id" <?php if (isset($_SESSION["new_dev_id"])) {
-                                                                                                  echo " value='" . $_SESSION["new_dev_id"] . "'";
-                                                                                                  unset($_SESSION['new_dev_id']);
-                                                                                                } ?>onchange="set_url('type_id','device_per_name',this.value)">
+                  echo " value='" . $_SESSION["new_dev_id"] . "'";
+                 unset($_SESSION['new_dev_id']);
+             } ?>onchange="set_url('type_id','device_per_name',this.value)">
                     <option value="">- Select Code -</option>
 
                     <?php
@@ -205,40 +205,40 @@
                 <label class="control-label col-sm-4">Total</label>
                 <div class="col-sm-9">
                   <input required type="number" class="form-control" placeholder="Total" name="o_total" id="o_total" <?php if (isset($_SESSION["new_o_total"])) {
-                                                                                                                        echo " value='" . $_SESSION["new_o_total"] . "'";
-                                                                                                                        unset($_SESSION['new_o_total']);
-                                                                                                                      } ?>><br>
+        echo " value='" . $_SESSION["new_o_total"] . "'";
+        unset($_SESSION['new_o_total']);
+        } ?>><br>
                 </div>
               </div><?php if (isset($_SESSION["new_dev_id"])) {
-                                                                                                                    echo " value='" . $_SESSION["new_dev_id"] . "'";
-                                                                                                                    unset($_SESSION['new_dev_id']);
-                                                                                                                  } ?>><br>
-                       </div>
-                     </div> -->
-              <div class="form-group">
-                <!-- <label class="control-label col-sm-4">Date</label> -->
-                <div class="col-sm-9">
-                  <input type="hidden" class="form-control" placeholder="<?php echo date('Y-m-d'); ?>" name="bp_date" id="bp_date" <?php echo date('Y-m-d'); ?>><br>
-                </div>
-              </div>
+                      echo " value='" . $_SESSION["new_dev_id"] . "'";
+                      unset($_SESSION['new_dev_id']);
+                    } ?>><br>
             </div>
-
-
-            <div class="modal-footer">
-
-              <button type="submit" class="btn btn-primary">Edit Data
-              </button>
-              <input type="hidden" name="action" id="action" value="edit_bpp">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div> -->
+          <div class="form-group">
+            <!-- <label class="control-label col-sm-4">Date</label> -->
+            <div class="col-sm-9">
+              <input type="hidden" class="form-control" placeholder="<?php echo date('Y-m-d'); ?>" name="bp_date" id="bp_date" <?php echo date('Y-m-d'); ?>><br>
             </div>
-
-
-
           </div>
         </div>
+
+
+        <div class="modal-footer">
+
+          <button type="submit" class="btn btn-primary">Edit Data
+          </button>
+          <input type="hidden" name="action" id="action" value="edit_bpp">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+
+
       </div>
     </div>
-  </form>
+</div>
+</div>
+</form>
 </div>
 
 <?php

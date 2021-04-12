@@ -540,7 +540,7 @@ class DeviceClass
 					'$device_photo', 
 					'$device_status', 
 					'$location_id', 
-					$device_deployment_date, 
+					'$device_deployment_date', 
 					'$_SESSION[username]', 
 					NOW(), 
 					'$_SESSION[username]', 
@@ -643,8 +643,12 @@ class DeviceClass
 				$changes .= "Dev location id : $c_location_id -> $location_id. ";
 			}
 			// Insert to device changes
-			$query_changes = "INSERT INTO device_changes (device_id, changes, updated_by, updated_date) 
-								VALUES ('$device_id', '".addslashes($changes)."', '$_SESSION[username]', NOW())";
+			$query_changes = "INSERT INTO 
+			device_changes (device_id, changes, updated_by, updated_date) 
+								VALUES (
+									'$device_id', 
+									'".addslashes($changes)."',
+									'$_SESSION[username]', NOW())";
 			$changes_process = $this->db->query($query_changes);
 
 			// Edit process
