@@ -149,6 +149,7 @@ if ($_POST['action'] === 'delete_bpp') {
   $is_rollback = ($_POST['is_rollback'] == "true") ? true : false ;
   $bpp_id = $_POST['bpp_id'];
   $device_id = $_POST['device_id'];
+
   
   if ($is_rollback) {
     $out_quantity = $_POST['out_quantity'];

@@ -206,22 +206,6 @@ class BppClass
 
 	}
 
-	public function getAllBpp()
-	{
-		$this->db->query("SELECT 
-					bpp_id, 
-					request_quantity, 
-					request_unit,
-					request_code,
-					request_description,
-					out_quantity,
-					out_unit,
-					out_code,
-					out_total FROM bpp 
-					
-					");
-		return $this->db->resultSet();
-	}
 
 	public function getBppById($bpp_id)
 	{
@@ -230,36 +214,17 @@ class BppClass
 		return $this->db->single();
 	}
 
-	public function show_bpp_new() {
+	public function get_all_bpp() {
 		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id";
 
 		$result = $this->db->query($query);
 		return $result;
 	}
 
-
-	public function show_bpp($bpp_id="")
-	{
-		$query = "SELECT 
-					bpp_id, 
-					bpp_report_id,
-					request_quantity, 
-					request_unit,
-					request_code,
-					request_description,
-					out_quantity,
-					out_unit,
-					out_code,
-					out_total, 
-					tanggal,
-					created_by, 
-					created_date, 
-					updated_by, 
-					updated_date FROM bpp 
-					";
-
-		$process = $this->db->query($query);
-		return $process;
+	public function get_all_distinct_tanggal() {
+		$query = "SELECT DISTINCT tanggal FROM bpp";
+		$result = $this->db->query($query);
+		return $result;
 	}
 
 	public function show_bpp_history($id="")

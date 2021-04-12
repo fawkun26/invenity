@@ -178,6 +178,7 @@ include("./include/include_header.php");
             }
           ?>
           <!-- <a href='process.php?aksi=delete_bpp&id=$bpp_data[bpp_id]; ?' class='badge badge-danger' onclick=\"return confirm('Anda Yakin Menghapus Data Ini ?')\">Hapus</a> -->
+          <!-- ilham ganteng -->
           <div class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report LPB</div>
@@ -231,10 +232,10 @@ include("./include/include_header.php");
 // get footer
 include("./include/include_footer.php");
 // get plugins
-include("./include/init_tinymce.php");
+// include("./include/init_tinymce.php");
 include("./include/init_datatables.php");
-include("./include/init_validetta.php");
-//include("./include/init_chosen.php");
+// include("./include/init_validetta.php");
+// include("./include/init_chosen.php");
 include("./include/init_fancybox.php");
 
 echo "<script type='text/javascript' src='./js/lpb.js'></script>";

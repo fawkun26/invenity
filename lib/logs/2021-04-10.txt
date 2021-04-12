@@ -1,0 +1,10 @@
+Time : 11:59:56
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'device_id = '122'' at line 1
+Raw SQL : SELECT * FROM device_list WHER device_id = '122'
+
+Time : 11:56:27
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'device_id = '122'' at line 1
+Raw SQL : SELECT * FROM device_list WHER device_id = '122'
+
+Time : 11:08:18
+SQLSTATE[HY000] [2002] Connection refused
