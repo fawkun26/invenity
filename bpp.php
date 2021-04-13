@@ -1,7 +1,4 @@
 <?php
-
-use Dotenv\Dotenv;
-
 session_start();
 
 /**
@@ -130,20 +127,20 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
                 <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report BPP</div>
                 <div class="panel-body">
                   <!-- <a href="report_lpb.php?by=lpb_report_id&name=lpb_per_date" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a> -->
-                  <a target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
+                  <a href="reports/bpp.php" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
                   <hr>
                   <p>Specific Date Type :</p>
                   <div class="input-group">
                   <!-- get all distinct tanggal from bpp -->
                   <?php $tanggal_s = $bppClass->get_all_distinct_tanggal(); ?>
-                    <select class="form-control chosen-select">
+                    <select id="select_report_bpp" class="form-control chosen-select">
                       <option>- Select Date Type -</option>
                       <?php foreach($tanggal_s as $key => $tanggal) { ?>
                         <option value="<?= $tanggal['tanggal'] ?>"><?= $tanggal['tanggal'] ?></option>
                       <?php } ?>
                     </select>
                     <span class="input-group-btn">
-                      <a href="#" class="btn btn-primary lpb_per_date" target="">Show</a>
+                      <a id="btn_show_report_bpp" href="#" class="btn btn-primary lpb_per_date" target="_blank">Show</a>
                     </span>
                   </div>
                 </div>
@@ -170,17 +167,21 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
   ?>
   <script src="js/bpp.js"></script>
   <script type="text/javascript">
-  $(document).ready(function () {
-      function set_url(by, nama, kriteria) {
-        if (kriteria != "") {
-          $("." + nama).attr('href', 'report_bpp.php?by=' + by + '&name=' + nama + '&criteria=' + kriteria);
-          $("." + nama).attr('target', '_blank');
-        } else {
-          $("." + nama).attr('href', '#');
-          $("." + nama).attr('target', '');
-        }
-      }
-    })
+  $('#select_report_bpp').on('change', function(e) {
+    console.log(e.target.value);
+    $('#btn_show_report_bpp').attr('href', `reports/bpp.php?tanggal=${e.target.value}`);
+  })
+  // $(document).ready(function () {
+  //     function set_url(by, nama, kriteria) {
+  //       if (kriteria != "") {
+  //         $("." + nama).attr('href', 'report_bpp.php?by=' + by + '&name=' + nama + '&criteria=' + kriteria);
+  //         $("." + nama).attr('target', '_blank');
+  //       } else {
+  //         $("." + nama).attr('href', '#');
+  //         $("." + nama).attr('target', '');
+  //       }
+  //     }
+  //   })
   </script>
 </body>
 

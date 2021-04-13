@@ -1,0 +1,80 @@
+@page {
+  size: A4;
+  margin-top: 10mm;
+  margin-right: 10mm;
+  margin-bottom: 10mm;
+  margin-left: 10mm;
+
+  @bottom-right {
+    content: "Page "counter(page)"/" counter(pages);
+  }
+
+}
+
+.pagedjs_page {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+}
+h1 {
+  font-size: 1.75rem;
+}
+h2 {
+  font-size: 1.20rem;
+}
+p {
+  font-size: .85rem;
+}
+.header {
+  display: flex;
+}
+.logo {
+  width: 150px;
+  height: 150px;
+}
+.title {
+}
+.location {
+  font-size: 0.75rem;
+}
+
+.thead, .tbody, .ttd {
+  font-size: .85rem;
+}
+
+.subtitle {
+
+}
+.ttd-wrapper {
+  /* break-before: page; */
+}
+.ttd {
+  height: 130px;
+}
+.ttd > div[class^='col-'] {
+
+}
+.hr-1 {
+  height: 1px;
+  background-color: black;
+}
+.hr-2 {
+  height: 2px;
+  background-color: black;
+}
+.mt-05 {
+  margin-top: 0.125rem !important;
+}
+
+.border-black {
+  border-color: #000 !important;
+}
+.bg-black {
+  background-color: #000 !important;
+}
+.opacity-100 {
+  opacity: 1 !important;
+}
