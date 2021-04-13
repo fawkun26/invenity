@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//  edit edit bpp
 /**
  *	Required Class
  */
@@ -92,7 +92,7 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
               <th>Uraian</th>
               <th>Dikeluarkan</th>
               <th>Satuan</th>
-              <th>Kode Barang</th>
+              <th>Kode Barang</th>e branch 'master' of https://github.com/Mohamad-Ilham-Ramadhan/invenity [fawkun26]
               <th>Total</th>
               <th>Tanggal</th>
               <th>Action</th>
