@@ -261,11 +261,6 @@ include("./include/include_modal_lpb_edit.php");
           $("."+nama).attr('target', ''); 
         }
       }
-
-
-
-
-
     </script>
     </body>
     </html>
