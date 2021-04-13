@@ -164,19 +164,42 @@ if ($_POST['action'] === 'edit_bpp') {
   
   // Jika device_id yang lama sama dengan yang baru
   if ($device_id == $old_device_id) {
-    $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$device_id'");
+    $old_device_quantity = $db->query("SELECT 
+    device_quantity 
+    from 
+    device_list 
+    where device_id='$device_id'");
     $old_device_quantity = $old_device_quantity[0]['device_quantity'];
     $new_device_quantity = ($old_device_quantity + $old_out_quantity) - $out_quantity;
-    $resultDeviceList = $db->query("UPDATE device_list set device_quantity='$new_device_quantity' where device_id='$device_id'");
+    $resultDeviceList = $db->query("UPDATE 
+    device_list 
+    set 
+    device_quantity='$new_device_quantity' 
+    where device_id='$device_id'");
   } else {
     // roll back device quantity yang lama dulu
-    $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$old_device_id'");
+    $old_device_quantity = $db->query("SELECT 
+    device_quantity 
+    from 
+    device_list 
+    where 
+    device_id='$old_device_id'");
     $old_device_quantity = $old_device_quantity[0]['device_quantity'];
     $new_device_quantity = $old_device_quantity + $old_out_quantity;
-    $resultRollbackQuantity = $db->query("UPDATE device_list set device_quantity='$new_device_quantity' where device_id='$old_device_id'");
+    $resultRollbackQuantity = $db->query("UPDATE 
+    device_list 
+    set 
+    device_quantity='$new_device_quantity' 
+    where 
+    device_id='$old_device_id'");
 
     // lalu update device quantity yang baru
-    $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$device_id'");
+    $old_device_quantity = $db->query("SELECT 
+    device_quantity 
+    from 
+    device_list 
+    where 
+    device_id='$device_id'");
     $old_device_quantity = $old_device_quantity[0]['device_quantity'];
     $new_device_quantity = $old_device_quantity - $out_quantity;
     $resultDeviceList = $db->query("UPDATE device_list set device_quantity='$new_device_quantity' where device_id='$device_id'");

@@ -1,0 +1,9 @@
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.mr-2 {
+  margin-right: 16px;
+}
