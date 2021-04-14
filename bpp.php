@@ -92,7 +92,7 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
               <th>Uraian</th>
               <th>Dikeluarkan</th>
               <th>Satuan</th>
-              <th>Kode Barang</th>e branch 'master' of https://github.com/Mohamad-Ilham-Ramadhan/invenity [fawkun26]
+              <th>Kode Barang</th>
               <th>Total</th>
               <th>Tanggal</th>
               <th>Action</th>
@@ -161,28 +161,21 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
   include("./include/include_footer.php");
   // get plugins
   include("./include/init_datatables.php");
-  include("./include/include_modal_bpp.php");
-  include('./include/include_modal_bpp_delete.php');
+  include("./include/include_modal_bpp.php"); // ini
+  include('./include/include_modal_bpp_delete.php'); // ini
 
   ?>
-  <script src="js/bpp.js"></script>
+  
+  <script src="js/bpp.js"></script> <!-- ini -->
+  <!-- ini -->
   <script type="text/javascript">
   $('#select_report_bpp').on('change', function(e) {
     console.log(e.target.value);
     $('#btn_show_report_bpp').attr('href', `reports/bpp.php?tanggal=${e.target.value}`);
   })
-  // $(document).ready(function () {
-  //     function set_url(by, nama, kriteria) {
-  //       if (kriteria != "") {
-  //         $("." + nama).attr('href', 'report_bpp.php?by=' + by + '&name=' + nama + '&criteria=' + kriteria);
-  //         $("." + nama).attr('target', '_blank');
-  //       } else {
-  //         $("." + nama).attr('href', '#');
-  //         $("." + nama).attr('target', '');
-  //       }
-  //     }
-  //   })
   </script>
+  <!-- ini -->
+
 </body>
 
 </html>

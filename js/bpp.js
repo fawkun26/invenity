@@ -128,3 +128,8 @@ $('.btn-delete-bpp').click(function(e) {
   $('[data-holder="span-tanggal"]').text($(this).data('tanggal'));
 })
 
+// == create new bpp history (modal)
+$('#btn_create_new_bpp_history').click(function(e) {
+  alert('create new bpp history');
+})
+
