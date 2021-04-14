@@ -23,6 +23,35 @@ if (isset($_SESSION["new_out_code"])) {
         <div class="modal-body" id="modal_content_bpp">
           <div class="box-header with-border">
             <legend>
+              <h6 class="panel-heading">BPP History</h6>
+            </legend>
+            <div class="form-group">
+              <label class="control-label col-sm-2">Pilih BPP history</label>
+              <div class="col-sm-8">
+                <!-- button ini jika di click akan submit <form name="create_new_bpp_history' > check bpp.js -->
+                <button class="btn btn-primary mb-2" id="btn_create_new_bpp_history">Buat BPP history baru</button>
+                <div class="row">
+                  <div class="col-sm-9">
+                    <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history" required>
+                      <option value="">- Pilih BPP History</option>
+                      <option value="001/BPP/04/2021">001/BPP/04/2021</option>
+                      <option value="002/BPP/04/2021">002/BPP/04/2021</option>
+                      <option value="003/BPP/04/2021">003/BPP/04/2021</option>
+                      <option value="004/BPP/04/2021">004/BPP/04/2021</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="btn btn-default btn-circle border-0 keterangan" aria-label="Keterangan" data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+
+            <legend>
               <h6 class="panel-heading">Request</h6>
             </legend>
             <input type="hidden" id="input_bpp_id" name="bpp_id">
@@ -132,6 +161,9 @@ if (isset($_SESSION["new_out_code"])) {
 
       </div>
     </div>
+  </form>
+  <form action="process/bpp_history.php" name="create_new_bpp_history" id="form_create_new_bpp_history">
+    <input type="hidden" name="bpp_history_nomor" value="">
   </form>
 </div>
 

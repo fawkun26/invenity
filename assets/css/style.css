@@ -7,3 +7,22 @@
 .mr-2 {
   margin-right: 16px;
 }
+.mb-2 {
+  margin-bottom: 16px;
+}
+
+.btn-circle {
+  border-radius: 50% !important;
+}
+
+.border-0 {
+  border: 0;
+}
+
+.keterangan {
+  margin-left: -24px;
+}
+.keterangan:hover {
+  background-color: transparent;
+  color: black; 
+}
