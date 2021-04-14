@@ -38,7 +38,7 @@ CREATE TABLE `bpp` (
   `updated_by` varchar(50) DEFAULT NULL,
   `updated_date` datetime DEFAULT NULL,
   PRIMARY KEY (`bpp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `bpp` (
 
 LOCK TABLES `bpp` WRITE;
 /*!40000 ALTER TABLE `bpp` DISABLE KEYS */;
-INSERT INTO `bpp` VALUES (146,'20210407',7,'buah','Device baru mantep',7,'buah',134,7,'2021-04-07','admin','2021-04-07 09:15:11','admin','2021-04-08 09:01:14');
+INSERT INTO `bpp` VALUES (181,'001/BPP/04/2021',2,'buah','Device baru mantep',2,'buah',122,2,'2021-04-14','admin','2021-04-14 03:53:53','admin','2021-04-14 03:53:53');
 /*!40000 ALTER TABLE `bpp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `bpp_history`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bpp_history` (
   `nomor` varchar(50) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`nomor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -71,7 +71,7 @@ CREATE TABLE `bpp_history` (
 
 LOCK TABLES `bpp_history` WRITE;
 /*!40000 ALTER TABLE `bpp_history` DISABLE KEYS */;
-INSERT INTO `bpp_history` VALUES ('20210407','2021-04-07 09:15:11');
+INSERT INTO `bpp_history` VALUES ('001/BPP/04/2021','2021-04-14 07:40:56'),('001/BPP/05/2021','2021-05-14 08:03:42'),('002/BPP/04/2021','2021-04-14 07:41:58'),('002/BPP/05/2021','2021-05-14 08:04:53'),('003/BPP/04/2021','2021-04-15 07:42:21'),('003/BPP/05/2021','2021-05-14 08:05:45'),('004/BPP/04/2021','2021-04-15 08:02:53'),('005/BPP/04/2021','2021-04-16 08:02:59');
 /*!40000 ALTER TABLE `bpp_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `device_list` (
 
 LOCK TABLES `device_list` WRITE;
 /*!40000 ALTER TABLE `device_list` DISABLE KEYS */;
-INSERT INTO `device_list` VALUES (2,13,'B3','asd',20,5,'3\"','50','sdf','<p>ewfewr</p>','./assets/images/device_photos/standard_device.jpg','damaged',1,'2021-01-08 00:01:46','admin','2020-11-26 20:25:05','admin','2021-04-07 08:12:00',22),(3,10,'A5','XXX',10,5,'Baru','1','BLUE','<p>XXXX</p>','./assets/images/device_photos/XXX.png','new',2,'2020-11-30 12:42:56','admin','2020-11-30 12:39:55','admin','2021-04-02 06:26:22',5),(5,10,'A5','ZZZ',10,1,'Lama','2','BLUE','','./assets/images/device_photos/standard_device.jpg','new',1,'2020-12-20 11:38:18','admin','2020-11-30 12:57:27','admin','2021-03-18 10:11:42',6),(102,10,'A5','localzz',10,10,'cxz','3','BLUE','<p>dwadawd</p>','./assets/images/device_photos/990.png','new',2,'2020-12-01 14:57:42','admin','2020-11-30 13:57:50','admin','2021-03-15 05:15:19',8),(103,10,'A5','123456789',10,14,'0909839273','4','jfejfiejf','<p>fsaefe</p>','./assets/images/device_photos/standard_device.jpg','new',1,'0000-00-00 00:00:00','admin','2020-11-30 13:59:46','admin','2020-11-30 13:59:46',0),(104,10,'A5','awww',10,5,'777','5','Green','<p>dawdaw</p>','./assets/images/device_photos/standard_device.jpg','new',1,'0000-00-00 00:00:00','admin','2020-12-01 14:17:17','admin','2020-12-01 14:17:17',0),(110,20,'B10','abc',10,6,'r3rq3','A7X1','BLUE','<p>wrw</p>','./assets/images/device_photos/standard_device.jpg','new',2,'0000-00-00 00:00:00','admin','2020-12-11 21:03:07','admin','2020-12-11 21:03:07',0),(122,9,'A4','xxxxx',27,8,'12345','10','blue','<p>321312</p>','./assets/images/device_photos/3213123.jpg','new',2,'2021-01-21 00:28:02','admin','2021-01-13 02:25:18','admin','2021-01-21 00:28:02',1),(123,10,'A5','23123123',15,16,'asing','1111111','blue','<p>dwadwadaw</p>','./assets/images/device_photos/1111111.jpg','new',2,'2021-01-25 23:07:23','','0000-00-00 00:00:00','admin','2021-01-25 23:07:23',4),(124,9,'A4','xxxxxxxx',32,7,'','20','','','./assets/images/device_photos/22222222.png','new',0,'2021-01-21 00:28:37','','0000-00-00 00:00:00','admin','2021-01-21 00:28:37',1),(132,10,'PERUMDA/2021/A5/1','fdwdqdQ',15,15,'232312','44456112','CDADAW','<p>EWEAEA</p>','./assets/images/device_photos/44456112.jpg','new',2,'0000-00-00 00:00:00','admin','2021-01-30 16:46:59','admin','2021-01-30 16:46:59',0),(133,10,'A5/2','dwada',10,11,'fawfw','231567','blue','<p>aawfawf</p>','./assets/images/device_photos/231567.jpg','new',2,'0000-00-00 00:00:00','admin','2021-01-30 17:16:14','admin','2021-01-30 17:16:14',0),(134,10,'A5/3','wdawd',13,18,'acsc','dwada','casc','<p>dwdw</p>','./assets/images/device_photos/standard_device.jpg','new',2,'0000-00-00 00:00:00','admin','2021-01-30 17:16:47','admin','2021-01-30 17:16:47',0),(135,10,'A5/ilham-ganteng//4','Angel Steel',20,5,'AV7','666','Black','<p>mantep</p>','./assets/images/device_photos/standard_device.jpg','in use',1,'2021-03-15 07:53:53','admin','2021-03-15 07:53:53','admin','2021-03-15 07:53:53',0);
+INSERT INTO `device_list` VALUES (2,13,'B3','asd',14,5,'3\"','50','sdf','<p>ewfewr</p>','./assets/images/device_photos/standard_device.jpg','damaged',1,'2021-01-08 00:01:46','admin','2020-11-26 20:25:05','admin','2021-04-07 08:12:00',22),(3,10,'A5','XXX',21,5,'Baru','1','BLUE','<p>XXXX</p>','./assets/images/device_photos/XXX.png','new',2,'2020-11-30 12:42:56','admin','2020-11-30 12:39:55','admin','2021-04-02 06:26:22',5),(5,10,'A5','ZZZ',27,1,'Lama','2','BLUE','','./assets/images/device_photos/standard_device.jpg','new',1,'2020-12-20 11:38:18','admin','2020-11-30 12:57:27','admin','2021-03-18 10:11:42',6),(102,10,'A5','localzz',25,10,'cxz','3','BLUE','<p>dwadawd</p>','./assets/images/device_photos/990.png','new',2,'2020-12-01 14:57:42','admin','2020-11-30 13:57:50','admin','2021-03-15 05:15:19',8),(103,10,'A5','123456789',25,14,'0909839273','4','jfejfiejf','<p>fsaefe</p>','./assets/images/device_photos/standard_device.jpg','new',1,'0000-00-00 00:00:00','admin','2020-11-30 13:59:46','admin','2020-11-30 13:59:46',0),(104,10,'A5','awww',27,5,'777','5','Green','<p>dawdaw</p>','./assets/images/device_photos/standard_device.jpg','new',1,'0000-00-00 00:00:00','admin','2020-12-01 14:17:17','admin','2020-12-01 14:17:17',0),(110,20,'B10','abc',14,6,'r3rq3','A7X1','BLUE','<p>wrw</p>','./assets/images/device_photos/standard_device.jpg','new',2,'0000-00-00 00:00:00','admin','2020-12-11 21:03:07','admin','2020-12-11 21:03:07',0),(122,9,'A4','xxxxx',-20,8,'12345','10','blue','<p>321312</p>','./assets/images/device_photos/3213123.jpg','new',2,'2021-01-21 00:28:02','admin','2021-01-13 02:25:18','admin','2021-01-21 00:28:02',1),(123,10,'A5','23123123',15,16,'asing','1111111','blue','<p>dwadwadaw</p>','./assets/images/device_photos/1111111.jpg','new',2,'2021-01-25 23:07:23','','0000-00-00 00:00:00','admin','2021-01-25 23:07:23',4),(124,9,'A4','xxxxxxxx',27,7,'','20','','','./assets/images/device_photos/22222222.png','new',0,'2021-01-21 00:28:37','','0000-00-00 00:00:00','admin','2021-01-21 00:28:37',1),(132,10,'PERUMDA/2021/A5/1','fdwdqdQ',27,15,'232312','44456112','CDADAW','<p>EWEAEA</p>','./assets/images/device_photos/44456112.jpg','new',2,'0000-00-00 00:00:00','admin','2021-01-30 16:46:59','admin','2021-01-30 16:46:59',0),(133,10,'A5/2','dwada',27,11,'fawfw','231567','blue','<p>aawfawf</p>','./assets/images/device_photos/231567.jpg','new',2,'0000-00-00 00:00:00','admin','2021-01-30 17:16:14','admin','2021-01-30 17:16:14',0),(134,10,'A5/3','wdawd',33,18,'acsc','dwada','casc','<p>dwdw</p>','./assets/images/device_photos/standard_device.jpg','new',2,'0000-00-00 00:00:00','admin','2021-01-30 17:16:47','admin','2021-01-30 17:16:47',0),(135,10,'A5/ilham-ganteng//4','Angel Steel',13,5,'AV7','666','Black','<p>mantep</p>','./assets/images/device_photos/standard_device.jpg','in use',1,'2021-03-15 07:53:53','admin','2021-03-15 07:53:53','admin','2021-03-15 07:53:53',0);
 /*!40000 ALTER TABLE `device_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -524,4 +524,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-08  2:03:51
+-- Dump completed on 2021-04-14  9:09:34

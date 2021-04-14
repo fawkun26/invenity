@@ -129,7 +129,8 @@ $('.btn-delete-bpp').click(function(e) {
 })
 
 // == create new bpp history (modal)
-$('#btn_create_new_bpp_history').click(function(e) {
-  alert('create new bpp history');
+$('#btn_create_bpp_history').click(function(e) {
+  // alert('create new bpp history');
+  $('#form_create_bpp_history').submit();
 })
 

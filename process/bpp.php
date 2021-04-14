@@ -1,5 +1,11 @@
 <?php
 session_start();
+/**
+* All BPP related request processing
+*
+* @author 		Mohamad Ilham Ramadhan
+* @version 		1.0
+*/
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
