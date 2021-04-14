@@ -17,6 +17,8 @@ require_once(__DIR__ . '/class/device.class.php');
 $devClass = new DeviceClass();
 require_once(__DIR__ . '/class/bpp.class.php');
 $bppClass = new BppClass();
+require_once(__DIR__ . '/class/bpp_history.class.php');
+$bppHistoryClass = new BPPHistoryClass();
 require_once(__DIR__ . '/class/delete.php');
 $delClass = new DelClass();
 // require_once(__DIR__ . '/class/device.class.php');

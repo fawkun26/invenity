@@ -1,0 +1,15 @@
+Time : 15:09:30
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '004/BPP/04/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) VALUES('004/BPP/04/2021')
+
+Time : 15:04:05
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '001/BPP/05/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) values ('001/BPP/05/2021')
+
+Time : 15:03:18
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '001/BPP/04/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) values ('001/BPP/04/2021')
+
+Time : 14:47:01
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '001/BPP/04/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) values ('001/BPP/04/2021')

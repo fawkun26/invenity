@@ -1,4 +1,7 @@
 <?php
+
+// require_once '../vendor/autoload.php';
+
 // If form error, show error
 if (isset($_SESSION["new_out_code"])) {
   echo "<script type='text/javascript'>
@@ -29,27 +32,21 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Pilih BPP history</label>
               <div class="col-sm-8">
                 <!-- button ini jika di click akan submit <form name="create_new_bpp_history' > check bpp.js -->
-                <button class="btn btn-primary mb-2" id="btn_create_new_bpp_history">Buat BPP history baru</button>
-                <div class="row">
-                  <div class="col-sm-9">
-                    <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history" required>
-                      <option value="">- Pilih BPP History</option>
-                      <option value="001/BPP/04/2021">001/BPP/04/2021</option>
-                      <option value="002/BPP/04/2021">002/BPP/04/2021</option>
-                      <option value="003/BPP/04/2021">003/BPP/04/2021</option>
-                      <option value="004/BPP/04/2021">004/BPP/04/2021</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="btn btn-default btn-circle border-0 keterangan" aria-label="Keterangan" data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
-                      <span class="glyphicon glyphicon-question-sign"></span>
-                    </div>
-                  </div>
+                <button class="btn btn-primary mb-2" id="btn_create_bpp_history" type="button">Buat BPP history baru</button>
+                <div class="col-sm-6" data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
+                  <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history" required data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
+                    <option value="">- Pilih BPP History</option>
+                    <?php
+                    $bpp_histories = $bppHistoryClass->get_by_current_day_and_month();
+                    foreach ($bpp_histories as $key => $history) { ?>
+                      <option value="<?= $history['nomor'] ?>"><?= $history['nomor'] ?></option>
+                    <?php } ?>
+                  </select>
                 </div>
 
               </div>
             </div>
-            
+
 
             <legend>
               <h6 class="panel-heading">Request</h6>
@@ -90,9 +87,9 @@ if (isset($_SESSION["new_out_code"])) {
                     $device_type_name = $device_type_data["type_name"];
                     $device_type_code = $device_type_data["device_code"];
                     $device_type_serial  = $device_type_data["device_serial"];
-                   
+
                   ?>
-                  <option data-device='<?= "$device_type_name (code=$device_type_code) (serial=$device_type_serial)" ?>' value="<?= $device_list_id ?>"><?= "$device_type_name (code=$device_type_code) (serial=$device_type_serial)" ?></option>
+                    <option data-device='<?= "$device_type_name (code=$device_type_code) (serial=$device_type_serial)" ?>' value="<?= $device_list_id ?>"><?= "$device_type_name (code=$device_type_code) (serial=$device_type_serial)" ?></option>
                   <?php } ?>
                 </select>
               </div>
@@ -162,8 +159,9 @@ if (isset($_SESSION["new_out_code"])) {
       </div>
     </div>
   </form>
-  <form action="process/bpp_history.php" name="create_new_bpp_history" id="form_create_new_bpp_history">
-    <input type="hidden" name="bpp_history_nomor" value="">
+  <form action="process/bpp_history.php" method="post" name="create_bpp_history" id="form_create_bpp_history">
+    <!-- <input type="hidden" name="bpp_history_nomor" value=""> -->
+    <input type="hidden" name="action" value="create_bpp_history">
   </form>
 </div>
 
