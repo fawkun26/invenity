@@ -131,12 +131,11 @@ if ($_POST['action'] === 'add_bpp') {
   die();
 }
 
-/**
- * Edit BPP
- */
+// === Edit BPP
 if ($_POST['action'] === 'edit_bpp') {
   // dd($_POST);
-  // $bpp_history_nomor = date('Ymd');
+
+  $bpp_history_nomor = $_POST['select_bpp_history'];
   $bpp_id = $_POST['bpp_id'];
   $old_out_quantity = $_POST['old_out_quantity'];
   $old_device_id = $_POST['old_device_id'];
@@ -158,6 +157,7 @@ if ($_POST['action'] === 'edit_bpp') {
 
 
   $resultUpdateBpp = $db->query("UPDATE bpp SET
+    bpp_history_nomor='$bpp_history_nomor',
     request_quantity='$request_quantity',
     request_unit='$request_unit',
     request_description='$request_description',
