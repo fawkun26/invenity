@@ -1,21 +1,11 @@
 /**
  *	LPB js
  *
- *	@author 	Permana Cakra
- * 	@version 	0.2
+ *	@author 	Mohamad Ilham Ramadhan
+ * 	@version 	1.0
  */
 $(document).ready(function () {
   $("#btn-add").click(show_add_bpp);
-
-  function show_bpp() {
-    $("#modal_title_bpp").html("Add BPP");
-    $("#type_name").val("");
-    $("#brand").val("");
-    $("model").val("");
-    $("#active").val("yes");
-    $("#action").val("add_bpp");
-    $("#modal_dialog_bpp").modal("show");
-  }
 
   function show_add_bpp() {
     $("#modal_dialog_bpp").modal("show");
@@ -35,23 +25,6 @@ $(document).ready(function () {
     $("#action").val("add_bpp");
   }
 
-  function show_add_bpp_history() {
-    $("#modal_dialog_bpp_history").modal("show");
-    $("#modal_title_bpp_history").html("Add Bpp");
-
-    $("#formModalLabel").html("Form Bpp");
-    $(".modal-footer button[type=submit]").html("Tambah Data");
-    $("#req_quantity").val("");
-    $("#req_unit").val("");
-    $("#req_code").val("");
-    $("#req_description").val("");
-    $("#o_quantity").val("");
-    $("#o_unit").val("");
-    $("#o_code").val("");
-    $("#o_total").val("");
-    $("#bpp_id").val("");
-    $("#action").val("add_bpp");
-  }
 
 	// populate input_device_code_out ketika <select  id="device_code_request"> onchange
   $("#select_device_code_request").on("change", function (e) {
@@ -61,7 +34,7 @@ $(document).ready(function () {
 
 });
 
-// bisa kalo di luar $(document).ready();
+// Untuk edit BPP
 function show_edit_bpp(bpp_id, data) {
   $("#modal_dialog_bpp").modal("show");
   $("#modal_title_bpp").html("Edit Bpp");
@@ -72,6 +45,7 @@ function show_edit_bpp(bpp_id, data) {
   $('#input_out_quantity').val(data.out_quantity)
   $('#input_out_unit').val(data.out_unit)
   $('#input_out_total').val(data.out_total)
+  $("#select_bpp_history").val(data.bpp_history_nomor).trigger('chosen:updated');
   $("#select_device_code_request").val(data.device_id).trigger('chosen:updated');
   $('#input_device_code_out').val($('#select_device_code_request').find(':selected').data('device'));
   
@@ -81,6 +55,7 @@ $('.show_modal_edit').click(function(e) {
   $('#input_action').val('edit_bpp');
   $('#btn_submit').text('Update data');
   const bpp_id = e.target.dataset.bppId;
+  const bpp_history_nomor = e.target.dataset.bppHistoryNomor;
   const $tr = $(this).closest('tr');
   const request_quantity = $tr.find('.request_quantity').text();
   const request_unit = $tr.find('.request_unit').text();
@@ -92,6 +67,7 @@ $('.show_modal_edit').click(function(e) {
   console.log('device id: ', device_id);
   const data = {
     device_id,
+    bpp_history_nomor,
     request_quantity,
     request_unit,
     request_description,

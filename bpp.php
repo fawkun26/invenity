@@ -111,7 +111,7 @@ include("./include/include_header.php");
                 <td class="data-edit out_total"><?= $bpp["out_total"] ?></td>
                 <td class="data-edit"><?= $bpp["tanggal"] ?></td>
                 <td>
-                  <button type='button' class='btn btn-sm btn-info glyphicon glyphicon-pencil float-right ml-1 show_modal_edit' data-toggle='modal' data-target='#formModal' data-bpp-id="<?= $bpp['bpp_id'] ?>" title='Edit Bpp'>edit</button>
+                  <button type='button' class='btn btn-sm btn-info glyphicon glyphicon-pencil float-right ml-1 show_modal_edit' data-toggle='modal' data-target='#formModal' data-bpp-id="<?= $bpp['bpp_id'] ?>" data-bpp-history-nomor="<?= $bpp['bpp_history_nomor'] ?>" title='Edit Bpp'>edit</button>
                   <button class="btn btn-sm btn-danger btn-delete-bpp glyphicon glyphicon-trash float-right ml-1" data-toggle="modal" data-target="#modal_delete" data-bpp-id="<?= $bpp['bpp_id'] ?>" data-device-id="<?= $bpp['device_id'] ?>" data-out-quantity="<?= $bpp['out_quantity'] ?>" data-no="<?= $key + 1 ?>" data-diminta="<?= $bpp['request_quantity'] ?>" data-satuan="<?= $bpp['request_unit'] ?>" data-uraian="<?= $bpp['request_description'] ?>" data-kode-barang='<?= $code ?>' data-tanggal="<?= $bpp['tanggal'] ?>">Delete</button>
                 </td>
               </tr>
