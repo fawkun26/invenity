@@ -34,7 +34,7 @@ class BPPHistoryClass
   {
     $hari = Carbon::now()->format('d');
     $bulan = Carbon::now()->format('m');
-    $result = $this->db->query("SELECT * FROM bpp_history WHERE month(created_at) = '$bulan' AND day(created_at) = '$hari' ");
+    $result = $this->db->query("SELECT * FROM bpp_history WHERE month(created_at) = '$bulan' AND day(created_at) = '$hari' ORDER BY created_at");
 
     return $result;
   }
