@@ -31,7 +31,9 @@ $bppClass  = new Bpp_model();
  */
 if ($_POST['action'] === 'add_bpp') {
 
-  $bpp_history_nomor = date('Ymd');
+  // dd($_POST);
+
+  $bpp_history_nomor = $_POST['select_bpp_history'];
   $request_quantity = $_POST['request_quantity'];
   $request_unit = $_POST['request_unit'];
   $request_description = $_POST['request_description'];
