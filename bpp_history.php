@@ -4,6 +4,7 @@ session_start();
 /**
  *	Required Class
  */
+require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/lib/db.class.php');
 $db        = new DB();
 require_once(__DIR__ . '/class/inventory.class.php');
@@ -14,8 +15,10 @@ require_once(__DIR__ . '/class/Bpp_model.php');
 $bppModel = new Bpp_model();
 require_once(__DIR__ . '/class/device.class.php');
 $devClass = new DeviceClass();
-require_once(__DIR__ . '/class/bpp.class.php');
-$bppClass = new BppClass();
+// require_once(__DIR__ . '/class/bpp.class.php');
+// $bppClass = new BppClass();
+require_once(__DIR__ . '/class/bpp_history.class.php');
+$bppHistoryClass = new BPPHistoryClass();
 require_once(__DIR__ . '/class/delete.php');
 $delClass = new DelClass();
 // require_once(__DIR__ . '/class/device.class.php');
@@ -32,14 +35,6 @@ include("./include/include_header.php");
 
 ?>
 
-<?php
-if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
-  // show info
-  echo "<div class='alert alert-info alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>$_SESSION[save_status]</div>";
-  // clear save_status session value
-  $_SESSION["save_status"] = "";
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -72,144 +67,95 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
       <div role="tabpanel" class="tab-pane fade active in" id="bpp_list" aria-labelledby="bpp_list_tab">
         <table class="table table-striped table-bordered datatables">
           <thead>
-          <tr>
-                <th>No</th>
-                <th>Diminta</th>		
-                <th>Satuan</th>
-                <th>Kode Barang</th>     
-                <th>Uraian</th>    							
-                <th>Dikeluarkan</th>
-                <th>Satuan</th> 
-                <th>Kode Barang</th>
-                <th>Total</th>
-                <th>Tanggal</th>
-                <th>Action</th>
-              </tr>
+            <tr>
+              <th>No</th>
+              <th>Nomor</th>
+              <th>Jumlah BPP</th>
+              <th>Jumlah Barang yang dikeluarkan</th>
+              <th>Tanggal</th>
+              <th>Action</th>
+            </tr>
           </thead>
+          <tbody>
+            <?php
+            $histories = $bppHistoryClass->get_all_with_total_bpp_and_device();
+            foreach ($histories as $key => $history) { ?>
+              <tr>
+                <td><?= $key + 1 ?></td>
+                <td><?= $history['nomor'] ?></td>
+                <td><?= $history['total_bpp'] ?></td>
+                <td><?= $history['total_out_quantity'] ?></td>
+                <td><?= $history['tanggal'] ?></td>
+                <td>
+                  <button class="btn btn-sm btn-primary btn-detail" data-target="#modal_detail" data-toggle="modal" data-bpp-history-nomor="<?= $history['nomor'] ?>">Detail</button>
+                </td>
+              </tr>
+            <?php } ?>
+
+          </tbody>
         </table>
-        <?php
+      </div>
 
-        // $bpp = $bppClass->show_bpp_history();
-        // if (count($bpp) > 0) {
-        //   $no      = 0;
-        //   $content = "<table class='table table-striped table-bordered datatables'>
-        //       <thead>
-				// 				<tr>
-                
-				// 					<th>No</th>
-				// 					<th>Diminta</th>		
-        //           <th>Satuan</th>
-        //           <th>Kode Barang</th>     
-        //           <th>Uraian</th>    							
-				// 					<th>Dikeluarkan</th>
-        //           <th>Satuan</th> 
-        //           <th>Kode Barang</th>
-				// 					<th>Total</th>
-        //           <th>Tanggal</th>
-        //           <th>Action</th>
-																									
-									
-				// 				</tr>
-				// 			</thead>
-				// 			<tbody>";
-
-
-        //   foreach ($bpp as $bpp_data) {
-        //     $no++;
-        //     $bpp_id      = $bpp_data["bpp_id"];
-        //     $request_quantity   = $bpp_data["request_quantity"];
-        //     $request_unit   = $bpp_data["request_unit"];
-        //     $request_code   = $bpp_data["request_code"];
-        //     $request_description   = $bpp_data["request_description"];
-        //     $out_quantity    = $bpp_data["out_quantity"];
-        //     $out_unit    = $bpp_data["out_unit"];
-        //     $out_code    = $bpp_data["out_code"];
-        //     $out_total = $bpp_data["out_total"];
-        //     $tanggal = $bpp_data["tanggal"];
-
-        //     $content .= "<tr>
-        //           <td>$no</td>
-        //           <td>$request_quantity</td>
-        //           <td>$request_unit</td>
-        //           <td>$request_code</td>
-        //           <td>$request_description</td>
-        //           <td>$out_quantity</td>
-        //           <td>$out_unit</td>
-        //           <td>$out_code</td>
-        //           <td>$out_total</td>
-        //           <td>$tanggal</td>
-        //           <input type='hidden' id='l_bpp_id_$bpp_id' value='$bpp_id'>
-        //           <input type='hidden' id='l_req_quantity_$bpp_id' value='$request_quantity'>
-        //           <input type='hidden' id='l_req_unit_$bpp_id' value='$request_unit'>
-        //           <input type='hidden' id='l_req_code_$bpp_id' value='$request_code'>
-        //           <input type='hidden' id='l_req_description_$bpp_id' value='$request_description'>
-        //           <input type='hidden' id='l_o_quantity_$bpp_id' value='$out_quantity'>
-        //           <input type='hidden' id='l_o_unit_$bpp_id' value='$out_unit'>
-        //           <input type='hidden' id='l_o_code_$bpp_id' value='$out_code'>
-        //           <input type='hidden' id='l_o_total_$bpp_id' value='$out_total'>
-        //           <td>
-        //           <button type ='button' class='glyphicon glyphicon-pencil float-right ml-1 tampilModalEdit' data-toggle='modal' data-target='#formModal' title='Edit Bpp' onclick=\"show_edit_bpp('$bpp_id')\">edit</button>
-                  
-
-                  
-                  
-
-        //           <a href='process.php?aksi=delete_bpp&id=$bpp_data[bpp_id]; ?' class='badge badge-danger' id='device_id' onclick=\"return confirm('Anda Yakin Menghapus Data Ini ?')\">Hapus</a> 
-
-                  
-                  
-        //           </td>
-                  
-        //         </tr>";
-        //   }
-
-
-        //   $content .= "</tbody></table>";
-        //   echo $content;
-        // } else {
-        //   echo "<p>No Data Found!</p>";
-        // }
-        ?>
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report BPP</div>
-            <div class="panel-body">
-              <a href="report_bpp.php?by=bpp_report_id&name=bpp_per_date" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
-              <hr>
-              <p>Specific Date Type :</p>
-              <div class="input-group">
-                <select class="form-control chosen-select" name="report_specific_bpp_type" onchange="set_url('bpp_report_id','bpp_per_date',this.value)">
-                  <option value="">- Select Date Type -</option>
-                  <?php
-                  // Get location
-                  $bpp_types     = "";
-                  $bpp_type_list = $bppClass->show_bpp();
-                  foreach ($bpp_type_list as $bpp_type_data) {
-                    $bpp_type_id   = $bpp_type_data["bpp_report_id"];
-                    // $bpp_type_name = $bpp_type_data["request_code"];
-                    // $bpp_types    .= "<option value='$bpp_type_id'>$bpp_type_name</option>";
-
-                    $bpp_type_date = $bpp_type_data["tanggal"];
-                    $bpp_types    .= "<option value='$bpp_type_id'>$bpp_type_date</option>";
-                  }
-                  echo $bpp_types;
-                  ?>
-                </select>
-                <span class="input-group-btn">
-                  <!-- <a href="report_bpp.php?id=" class="btn btn-primary per_date_type" target="">Show</a> -->
-                  <a href="#" class="btn btn-primary bpp_per_date" target="">Show</a>
-                </span>
-              </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report BPP</div>
+          <div class="panel-body">
+            <a href="report_bpp.php?by=bpp_report_id&name=bpp_per_date" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
+            <hr>
+            <p>Specific Date Type :</p>
+            <div class="input-group">
+              <select class="form-control chosen-select" name="report_specific_bpp_type" onchange="set_url('bpp_report_id','bpp_per_date',this.value)">
+                <option value="">- Select Date Type -</option>
+              </select>
+              <span class="input-group-btn">
+                <!-- <a href="report_bpp.php?id=" class="btn btn-primary per_date_type" target="">Show</a> -->
+                <a href="#" class="btn btn-primary bpp_per_date" target="">Show</a>
+              </span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
+
+  </div> <!-- col-lg-9 col-md-9 col-sm-12 col-xs-12 -->
 
 
 
+  <!-- Modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="modal_detail" style="z-index: 2050;">
+    <div class="modal-dialog" role="document" style="width: 1280px; overflow-x: scroll;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">BPP History</h4>
+        </div>
+        <div class="modal-body">
+          <table id="table_modal" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Diminta</th>
+                <th>Satuan</th>
+                <th>Kode Barang</th>
+                <th>Uraian</th>
+                <th>Dikeluarkan</th>
+                <th>Satuan</th>
+                <th>Kode Barang</th>
+                <th>Total</th>
+                <th>Tanggal</th>
+              </tr>
+            </thead>
+            <tbody id="modal_table_body">
+
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
   <?php
   // get footer
@@ -235,6 +181,49 @@ if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
         $("." + nama).attr('target', '');
       }
     }
+
+    // ===
+    $('.btn-detail').click(function(e) {
+      let table_modal = $('#table_modal').DataTable({
+        ajax: {
+          url: `process/bpp_history.php?action=get_all_bpp_of_bpp_history&nomor=${e.target.dataset.bppHistoryNomor}`,
+          dataSrc: ''
+        },
+        columns: [{
+            data: null
+          },
+          {
+            data: 'request_quantity'
+          },
+          {data: 'request_unit'},
+          {data: function(row, type, set, meta) {
+            return `${row.type_name} (${row.type_code}) (${row.device_serial})`;
+          }},
+          {data: 'request_description'},
+          {data: 'out_quantity'},
+          {data: 'out_unit'},
+          {data: function(row, type, set, meta) {
+            return `${row.type_name} (${row.type_code}) (${row.device_serial})`;
+          }},
+          {data: 'out_total'},
+          {data: 'tanggal'},
+        ]
+      });
+      // untuk index column
+      table_modal.on('order.dt search.dt', function() {
+        table_modal.column(0, {
+          search: 'applied',
+          order: 'applied'
+        }).nodes().each(function(cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+      // destroy datatable ketika modal di hide
+      $('#modal_detail').on('hide.bs.modal', function(e) {
+        console.log('destroy datatable');
+        table_modal.destroy();
+      })
+    });
   </script>
 </body>
 
