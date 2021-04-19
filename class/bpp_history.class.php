@@ -38,4 +38,10 @@ class BPPHistoryClass
 
     return $result;
   }
+  public function get_all_with_total_bpp_and_device() {
+    $query = "SELECT nomor, DATE(created_at) AS tanggal, COUNT(*) AS total_bpp, SUM(bpp.out_quantity) AS total_out_quantity FROM bpp_history INNER JOIN bpp ON bpp_history.nomor = bpp.bpp_history_nomor GROUP BY nomor";
+    $result = $this->db->query($query);
+
+    return $result;
+  }
 }

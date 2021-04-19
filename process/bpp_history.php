@@ -21,6 +21,17 @@ use Carbon\Carbon;
 
 // [Update database bpp_history tadi]
 // == create new bpp history 
+
+if ($_GET['action'] == 'get_all_bpp_of_bpp_history') {
+  $nomor = $_GET['nomor'];
+  $query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE bpp_history_nomor = '$nomor'";
+
+		$result = $db->query($query);
+  // $arr = ['name' => 'ilham', 'skill' => 'fullstack'];
+    echo json_encode($result);
+    die();
+}
+
 if ($_POST['action'] == 'create_bpp_history') {
 
   $bulan = Carbon::now()->format('m');
