@@ -88,6 +88,7 @@ include("./include/include_header.php");
                 <td><?= $history['tanggal'] ?></td>
                 <td>
                   <button class="btn btn-sm btn-primary btn-detail" data-target="#modal_detail" data-toggle="modal" data-bpp-history-nomor="<?= $history['nomor'] ?>">Detail</button>
+                  <a class="btn btn-sm btn-info" href="reports/bpp_history.php?history=<?= $history['nomor'] ?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Print</a>
                 </td>
               </tr>
             <?php } ?>
@@ -95,29 +96,9 @@ include("./include/include_header.php");
           </tbody>
         </table>
       </div>
-
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i> Report BPP</div>
-          <div class="panel-body">
-            <a href="report_bpp.php?by=bpp_report_id&name=bpp_per_date" target="_blank" class="btn btn-large btn-block btn-primary">Print All BPP</a>
-            <hr>
-            <p>Specific Date Type :</p>
-            <div class="input-group">
-              <select class="form-control chosen-select" name="report_specific_bpp_type" onchange="set_url('bpp_report_id','bpp_per_date',this.value)">
-                <option value="">- Select Date Type -</option>
-              </select>
-              <span class="input-group-btn">
-                <!-- <a href="report_bpp.php?id=" class="btn btn-primary per_date_type" target="">Show</a> -->
-                <a href="#" class="btn btn-primary bpp_per_date" target="">Show</a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-  </div> <!-- col-lg-9 col-md-9 col-sm-12 col-xs-12 -->
+  </> <!-- col-lg-9 col-md-9 col-sm-12 col-xs-12 -->
 
 
 
