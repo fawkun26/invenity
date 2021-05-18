@@ -57,14 +57,15 @@ include("./include/include_header.php");
     <div class="panel panel-primary">
       <div class="panel-body">
 
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs d-flex" role="tablist">
           <li role="presentation" class="active">
             <a href="#bpp_list" id="bpp_list_tab" role="tab" data-toggle="tab" aria-controls="bpp_list" aria-expanded="true"><i class="glyphicon glyphicon-hdd"> </i> BPP</a>
 
           </li>
-          <span class="pull-right"><button type="button" class="btn btn-default btn-sm tombolTambahData" id="btn-add"><i class="glyphicon glyphicon-plus"></i> Add Bpp</button>
+          <a href='bpp_history.php' class='d-flex items-center btn btn-primary btn-sm ml-auto'>Bpp History</a>
+          <button type="button" class="btn btn-default btn-sm btn-tambah-data" id="btn_add"><i class="glyphicon glyphicon-plus"></i> Add Bpp</button>
+          <button type="button" class="btn btn-default btn-sm btn-tambah-data" id="btn_add_januari_mei"><i class="glyphicon glyphicon-plus"></i> Add Bpp Januari-Mei</button>
           </span>
-          <a href='bpp_history.php' class='btn btn-primary btn-sm pull-right'>Bpp History</a>
         </ul>
       </div>
     </div>
@@ -97,7 +98,7 @@ include("./include/include_header.php");
           </thead>
           <tbody>
             <?php foreach ($bpp_s as $key => $bpp) {
-              $code =   $bpp["type_name"] . "($bpp[type_code]) ($bpp[device_serial])";
+              $code = $bpp["type_name"] . "($bpp[type_code]) ($bpp[device_serial])";
             ?>
               <tr>
                 <td><?= $key + 1 ?></td>
@@ -154,8 +155,10 @@ include("./include/include_header.php");
   include("./include/include_footer.php");
   // get plugins
   include("./include/init_datatables.php");
-  include("./include/include_modal_bpp.php"); // ini
-  include('./include/include_modal_bpp_delete.php'); // ini
+  include("./include/include_modal_bpp.php"); 
+  include("./include/include_modal_bpp_januari_mei.php"); 
+  include('./include/include_modal_bpp_delete.php'); 
+  include("./include/init_chosen.php");
 
   ?>
 

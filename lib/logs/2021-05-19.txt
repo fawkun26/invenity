@@ -1,0 +1,3 @@
+Time : 00:41:47
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '001/BPP/01/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) values ('001/BPP/01/2021')

@@ -5,8 +5,8 @@
  * 	@version 	1.0
  */
 $(document).ready(function () {
-  $("#btn-add").click(show_add_bpp);
-
+  // showing modal add BPP
+  $("#btn_add").click(show_add_bpp);
   function show_add_bpp() {
     $("#modal_dialog_bpp").modal("show");
     $("#modal_title_bpp").html("Add Bpp");
@@ -25,6 +25,33 @@ $(document).ready(function () {
     $("#action").val("add_bpp");
   }
 
+  // * Semua tentang BPP Januari-Mei
+  // update input:hidden #bulan_hidden value
+  $('#bpp_history_bulan').on('change', function(e) {
+    const bulan = $(this).find(':selected').val();
+    $('#bulan_hidden').val(bulan);
+    console.log('Bulan: ', bulan);
+    console.log('#bulan_hidden ', $('#bulan_hidden').val());
+  })
+  // submit <form id="form_create_bpp_history_januari_mei">
+  $('#error_msg_create_bpp_history').hide();
+
+  $('#btn_create_bpp_history_januari_mei').click(function(e) {
+    if( $('#bulan_hidden').val() ==  '') {
+      $('#error_msg_create_bpp_history').show();
+      return;
+    }
+    $('#error_msg_create_bpp_history').hide();
+    $('#form_create_bpp_history_januari_mei').submit();
+  });
+  // showing modal add BPP Januari Mei 
+  $('#btn_add_januari_mei').click(show_add_bpp_januari_mei);
+  function show_add_bpp_januari_mei() {
+    console.log('anjing!')
+    $('#modal_dialog_bpp_januari_mei').modal('show');
+  }
+  
+  // * Semua tentang BPP Januari-Mei
 
 	// populate input_device_code_out ketika <select  id="device_code_request"> onchange
   $("#select_device_code_request").on("change", function (e) {

@@ -12,29 +12,49 @@ if (isset($_SESSION["new_out_code"])) {
   $bpp_code_info = "<span class='text-danger' id='bpp_code_info'>Device with serial number : '$_SESSION[new_out_code]' is already exists!</span>";
 }
 ?>
-<div class="modal fade" tabindex="-1" role="dialog" id="modal_dialog_bpp">
-  <form class="form-horizontal" name="form_bpp" id="form_bpp" method="post" action="process/bpp.php">
+<div class="modal fade" tabindex="-1" role="dialog" id="modal_dialog_bpp_januari_mei">
+  <form class="form-horizontal" name="form_bpp" id="form_bpp_januari_mei" method="post" action="process/bpp.php">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modal_title_bpp">Add Bpp</h5>
+          <h5 class="modal-title" id="modal_title_bpp_januari_mei">Add Bpp</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
-        <div class="modal-body" id="modal_content_bpp">
+        <div class="modal-body" id="modal_content_bpp_januari_mei">
           <div class="box-header with-border">
             <legend>
               <h6 class="panel-heading">BPP History</h6>
             </legend>
+            <input type="hidden" name="action" value="create_bpp_history">
+            <div class="form-group">
+              <label class="control-label col-sm-2">Pilih Bulan</label>
+              <div class="col-sm-8">
+                <select name="bulan" id="bpp_history_bulan" class="form-control chosen-select" required>
+                  <option value="">- Pilih Bulan</option>
+                  <option value="01">Januari</option>
+                  <option value="02">Februari</option>
+                  <option value="03">Maret</option>
+                  <option value="04">April</option>
+                  <option value="05">Mei</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+                <button class="btn btn-primary mb-2" id="btn_create_bpp_history_januari_mei" type="button" type="submit"><span class="glyphicon glyphicon-alert
+"></span>Buat BPP history baru</button> <small style="color: red" id="error_msg_create_bpp_history"><span class="glyphicon glyphicon-exclamation-sign"></span>Pilih bulan terlebih dahulu</small>
+              </div>
+            </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Pilih BPP history</label>
               <div class="col-sm-8">
                 <!-- button ini jika di click akan submit <form name="create_new_bpp_history' > check bpp.js -->
-                <button class="btn btn-primary mb-2" id="btn_create_bpp_history" type="button">Buat BPP history baru</button>
-                <div class="col-sm-6" data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
-                  <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history" required data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
+                <div data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
+                  <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history_januari_mei" required data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
                     <option value="">- Pilih BPP History</option>
                     <?php
                     $bpp_histories = $bppHistoryClass->get_by_current_day_and_month();
@@ -51,14 +71,14 @@ if (isset($_SESSION["new_out_code"])) {
             <legend>
               <h6 class="panel-heading">Request</h6>
             </legend>
-            <input type="hidden" id="input_bpp_id" name="bpp_id">
-            <input type="hidden" id="input_old_out_quantity" name="old_out_quantity">
-            <input type="hidden" id="input_old_device_id" name="old_device_id">
+            <input type="hidden" id="input_bpp_id_januari_mei" name="bpp_id">
+            <input type="hidden" id="input_old_out_quantity_januari_mei" name="old_out_quantity">
+            <input type="hidden" id="input_old_device_id_januari_mei" name="old_device_id">
             <div class="form-group">
               <label class="control-label col-sm-2">Quantity</label>
 
               <div class="col-sm-6">
-                <input required type="number" class="form-control" placeholder="Quantity" name="request_quantity" id="input_request_quantity"><br>
+                <input required type="number" class="form-control" placeholder="Quantity" name="request_quantity" id="input_request_quantity_januari_mei"><br>
               </div>
             </div>
             <div class="form-group">
@@ -66,13 +86,13 @@ if (isset($_SESSION["new_out_code"])) {
 
               <div class="col-sm-6">
 
-                <input required id="input_request_unit" type="text" class="form-control" placeholder="Unit" name="request_unit"><br>
+                <input required id="input_request_unit_januari_mei" type="text" class="form-control" placeholder="Unit" name="request_unit"><br>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Device Code</label>
               <div class="col-sm-7">
-                <select class="form-control chosen-select" name="request_code" id="select_device_code_request" required>
+                <select class="form-control chosen-select" name="request_code" id="select_device_code_request_januari_mei" required>
                   <option value="">- Select Code -</option>
                   <?php
                   // Get Semua list yang ada di table device_type
@@ -100,7 +120,7 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Description</label>
 
               <div class="col-sm-6">
-                <input required type="text" class="form-control" placeholder="Description" name="request_description" id="input_request_description"><br>
+                <input required type="text" class="form-control" placeholder="Description" name="request_description" id="input_request_description_januari_mei"><br>
               </div>
             </div>
           </div>
@@ -116,21 +136,21 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Quantity</label>
 
               <div class="col-sm-6">
-                <input required type="number" class="form-control" placeholder="Quantity" name="out_quantity" id="input_out_quantity"><br>
+                <input required type="number" class="form-control" placeholder="Quantity" name="out_quantity" id="input_out_quantity_januari_mei"><br>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Unit</label>
 
               <div class="col-sm-6">
-                <input required type="text" class="form-control" placeholder="Unit" name="out_unit" id="input_out_unit"><br>
+                <input required type="text" class="form-control" placeholder="Unit" name="out_unit" id="input_out_unit_januari_mei"><br>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Device Code</label>
 
               <div class="col-sm-7">
-                <input type="text" disabled class="form-control" id="input_device_code_out">
+                <input type="text" disabled class="form-control" id="input_device_code_out_januari_mei">
               </div>
               <br>
               <br>
@@ -141,17 +161,17 @@ if (isset($_SESSION["new_out_code"])) {
               <label class="control-label col-sm-2">Total</label>
 
               <div class="col-sm-6">
-                <input required type="number" class="form-control" placeholder="Total" name="out_total" id="input_out_total"><br>
+                <input required type="number" class="form-control" placeholder="Total" name="out_total" id="input_out_total_januari_mei"><br>
               </div>
             </div>
           </div>
 
 
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" id="btn_submit">
+            <button type="submit" class="btn btn-primary" id="btn_submit_januari_mei">
               Tambah Data
             </button>
-            <input type="hidden" name="action" id="input_action" value="add_bpp">
+            <input type="hidden" name="action" id="input_action_januari_mei" value="add_bpp">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -159,9 +179,9 @@ if (isset($_SESSION["new_out_code"])) {
       </div>
     </div>
   </form>
-  <form action="process/bpp_history.php" method="post" name="create_bpp_history" id="form_create_bpp_history">
-    <!-- <input type="hidden" name="bpp_history_nomor" value=""> -->
+
+  <form action="process/bpp_history_januari_mei.php" method="post" name="create_bpp_history" id="form_create_bpp_history_januari_mei">
+    <input type="hidden" name="bulan" value="" id="bulan_hidden" required>
     <input type="hidden" name="action" value="create_bpp_history">
   </form>
 </div>
-

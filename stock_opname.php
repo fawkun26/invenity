@@ -37,21 +37,11 @@ include("./include/include_header.php");
 		<div class="panel-heading">
 			<h3 class="panel-title">
 				<i class="glyphicon glyphicon-briefcase"></i> &nbsp; <?php echo $current_page_name; ?>
-				<!-- <span class="pull-right"><button type="button" class="btn btn-default btn-sm" onclick="show_add_device_type()"><i class="glyphicon glyphicon-plus"></i> Add Device Type</button></span>
-				<span class="pull-right"><button type="button" class="btn btn-default btn-sm" onclick="show_add_device()"><i class="glyphicon glyphicon-plus"></i> Add Device</button></span> -->
 				</h3>
 				<br>
 			</div>
 
 			<div class='panel-body'>
-			<!--	<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active">
-					<a href="#dev_list" id="dev_list_tab" role="tab" data-toggle="tab" aria-controls="dev_list" aria-expanded="true"><i class="glyphicon glyphicon-hdd"></i> Device List</a>
-				</li>
-				<li role="presentation">
-					<a href="#dev_type_list" id="dev_type_list_tab" role="tab" data-toggle="tab" aria-controls="dev_type_list" aria-expanded="true"><i class="glyphicon glyphicon-pushpin"></i> Device Type List</a>
-				</li>
-			</ul> -->
 			<legend>Form Stock Opname</legend>
                 <div class="box-header with-border"></div><!-- /.box-header -->
                 <div class="box-body">
@@ -80,10 +70,6 @@ include("./include/include_header.php");
 
 
                     <hr class="dashed">
-                <!-- <input type="hidden" name="level" id="level" value="user">
-                <input type="hidden" name="action" id="action" value="edit_user">
-                <input type="hidden" name="action2" id="action2" value="edit_user">
-                <a href="" class="btn btn-default" >Cancel</a> -->
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="report_summary.php?by=a.location_id&name=per_location" target="_blank" class=" btn btn-primary">Print</a>
 
