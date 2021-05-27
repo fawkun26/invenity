@@ -1,0 +1,15 @@
+Time : 06:53:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''updated_at') VALUES('002/BPP/03/2021', 'admin', '2021-03-9', 'admin', '2021-03-' at line 1
+Raw SQL : INSERT INTO bpp_history(nomor, created_by, created_at, updated_by, 'updated_at') VALUES('002/BPP/03/2021', 'admin', '2021-03-9', 'admin', '2021-03-9')
+
+Time : 06:50:38
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''updated_at') VALUES('002/BPP/03/2021', 'admin', '2021-03-9', 'admin', '2021-03-' at line 1
+Raw SQL : INSERT INTO bpp_history(nomor, created_by, created_at, updated_by, 'updated_at') VALUES('002/BPP/03/2021', 'admin', '2021-03-9', 'admin', '2021-03-9')
+
+Time : 06:50:11
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''updated_at) VALUES('002/BPP/03/2021', 'admin', '2021-03-9', 'admin', '2021-03-9' at line 1
+Raw SQL : INSERT INTO bpp_history(nomor, created_by, created_at, updated_by, 'updated_at) VALUES('002/BPP/03/2021', 'admin', '2021-03-9', 'admin', '2021-03-9')
+
+Time : 06:46:02
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', created_by, updated_by, updated_at) VALUES('003/BPP/05/2021', 'admin', 'admin'' at line 1
+Raw SQL : INSERT INTO bpp_history(nomor, , created_by, updated_by, updated_at) VALUES('003/BPP/05/2021', 'admin', 'admin', '2021-05-27 06:46:02')

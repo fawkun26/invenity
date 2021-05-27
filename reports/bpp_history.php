@@ -67,7 +67,7 @@ if (isset($_GET['history'])) {
       <p class="text-capitalize">dimintal oleh bagian: ..............................................</p>
     </div>
 
-    <table class="table table-sm table-bordered border-black">
+    <table class="table table-sm table-bordered border-black" id="table" style="height: 500px">
       <thead class="thead text-capitalize text-center">
         <tr>
           <th colspan="3">yang diminta</th>
@@ -90,11 +90,11 @@ if (isset($_GET['history'])) {
           <tr class="align-middle">
             <td><?= $bpp['request_quantity'] ?></td>
             <td><?= $bpp['request_unit'] ?></td>
-            <td><?= $bpp['type_name'] ?></td>
+            <td><?= $bpp['type_name'] ?> (<?= $bpp['type_code'] ?>) (<?= $bpp['device_serial'] ?>)</td>
             <td><?= $bpp['request_description'] ?></td>
-            <td><?= $bpp['request_quantity'] ?></td>
             <td><?= $bpp['out_quantity'] ?></td>
             <td><?= $bpp['out_unit'] ?></td>
+            <td><?= $bpp['type_name'] ?> (<?= $bpp['type_code'] ?>) (<?= $bpp['device_serial'] ?>)</td>
             <td><?= $bpp['out_total'] ?></td>
           </tr>
         <?php } ?>
@@ -114,7 +114,7 @@ if (isset($_GET['history'])) {
       </tbody>
     </table>
     <!-- ttd -->
-    <div class="ttd-wrapper">
+    <div class="ttd-wrapper" id="ttd_wrapper">
       <div class="row g-0 w-100 ttd border border-black">
         <div class="col-3 py-2 border-end border-black text-center">
           Diterima oleh: Tgl.
@@ -139,9 +139,29 @@ if (isset($_GET['history'])) {
   </main>
 
   <script>
+    // documentation on https://www.pagedjs.org/documentation/ atau https://www.npmjs.com/package/pagedjs
+    const table = document.getElementById('table');
+    const ttdWrapper = document.getElementById('ttd_wrapper');
+    const tableHeight = table.offsetHeight;
+    const ttdWrapperHeight = ttdWrapper.offsetHeight;
     window.PagedConfig = {
-        // Setelah halaman ke render barulah tampilkan dialog print
-        after: (flow) => { window.print(); },
+      auto: false,
+      // Sebelum halaman di render
+      before: () => {
+        return new Promise((resolve, reject) => {
+          if (tableHeight > 500) {
+
+          } else {
+            resolve();
+          }
+        });
+      },
+      // Setelah halaman di render 
+        after: (flow) => { 
+          console.log(table.offsetHeight);
+          // barulah tampilkan dialog print
+          window.print(); 
+        },
     };
   </script>
   <script src="../assets/js/paged.polyfill.js"></script>

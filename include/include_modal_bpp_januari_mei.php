@@ -13,8 +13,8 @@ if (isset($_SESSION["new_out_code"])) {
 }
 ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_dialog_bpp_januari_mei">
-  <form class="form-horizontal" name="form_bpp" id="form_bpp_januari_mei" method="post" action="process/bpp.php">
-    <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg">
+    <form class="form-horizontal" name="form_bpp" id="form_bpp_januari_mei" method="post" action="process/bpp.php">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal_title_bpp_januari_mei">Add Bpp</h5>
@@ -26,13 +26,13 @@ if (isset($_SESSION["new_out_code"])) {
         <div class="modal-body" id="modal_content_bpp_januari_mei">
           <div class="box-header with-border">
             <legend>
-              <h6 class="panel-heading">BPP History</h6>
+              <h6 class="panel-heading">Buat BPP History</h6>
             </legend>
             <input type="hidden" name="action" value="create_bpp_history">
             <div class="form-group">
               <label class="control-label col-sm-2">Pilih Bulan</label>
               <div class="col-sm-8">
-                <select name="bulan" id="bpp_history_bulan" class="form-control chosen-select" required>
+                <select name="bulan" id="bpp_history_bulan" class="form-control chosen-select">
                   <option value="">- Pilih Bulan</option>
                   <option value="01">Januari</option>
                   <option value="02">Februari</option>
@@ -43,21 +43,32 @@ if (isset($_SESSION["new_out_code"])) {
               </div>
             </div>
             <div class="form-group">
+              <label class="control-label col-sm-2">Pilih Tanggal</label>
+              <div class="col-sm-8">
+                <select name="tanggal" id="bpp_history_tanggal" class="form-control chosen-select">
+                  <option value="">- Pilih Tanggal</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
               <div class="col-sm-2"></div>
               <div class="col-sm-8">
                 <button class="btn btn-primary mb-2" id="btn_create_bpp_history_januari_mei" type="button" type="submit"><span class="glyphicon glyphicon-alert
-"></span>Buat BPP history baru</button> <small style="color: red" id="error_msg_create_bpp_history"><span class="glyphicon glyphicon-exclamation-sign"></span>Pilih bulan terlebih dahulu</small>
+"></span>Buat BPP history baru</button> <small style="color: red" id="error_msg_create_bpp_history"><span class="glyphicon glyphicon-exclamation-sign"></span>Pilih bulan dan tanggal terlebih dahulu</small>
               </div>
             </div>
+            <legend>
+              <h6 class="panel-heading">BPP History</h6>
+            </legend>
             <div class="form-group">
               <label class="control-label col-sm-2">Pilih BPP history</label>
               <div class="col-sm-8">
                 <!-- button ini jika di click akan submit <form name="create_new_bpp_history' > check bpp.js -->
-                <div data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
-                  <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history_januari_mei" required data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history pada hari ini saja">
+                <div data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history rentang Januari-Mei">
+                  <select class="form-control chosen-select" name="select_bpp_history" id="select_bpp_history_januari_mei" required data-toggle="tooltip" data-placement="top" title="Ini adalah daftar BPP history rentang Januari-Mei">
                     <option value="">- Pilih BPP History</option>
                     <?php
-                    $bpp_histories = $bppHistoryClass->get_by_current_day_and_month();
+                    $bpp_histories = $bppHistoryClass->get_between_january_may();
                     foreach ($bpp_histories as $key => $history) { ?>
                       <option value="<?= $history['nomor'] ?>"><?= $history['nomor'] ?></option>
                     <?php } ?>
@@ -177,11 +188,12 @@ if (isset($_SESSION["new_out_code"])) {
         </div>
 
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 
   <form action="process/bpp_history_januari_mei.php" method="post" name="create_bpp_history" id="form_create_bpp_history_januari_mei">
-    <input type="hidden" name="bulan" value="" id="bulan_hidden" required>
+    <input type="hidden" name="bulan" value="" id="bulan_hidden">
+    <input type="hidden" name="tanggal" value="" id="tanggal_hidden">
     <input type="hidden" name="action" value="create_bpp_history">
   </form>
 </div>

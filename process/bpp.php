@@ -105,20 +105,11 @@ if ($_POST['action'] === 'add_bpp') {
       );
   }
 
-  $old_device_quantity = $db->query("SELECT 
-  device_quantity 
-  from 
-  device_list 
-  where 
-  device_id='$device_id'");
-  $old_device_quantity = $old_device_quantity[0]['device_quantity'];
-  $new_device_quantity = $old_device_quantity - $out_quantity;
-
   $resultDeviceList = $db->query("UPDATE 
   device_list 
-  set 
-  device_quantity='$new_device_quantity' 
-  where 
+  SET 
+  device_quantity = device_quantity - '$out_quantity' 
+  WHERE 
   device_id='$device_id'");
 
   $db->commitTransaction();
@@ -177,6 +168,7 @@ if ($_POST['action'] === 'edit_bpp') {
     from 
     device_list 
     where device_id='$device_id'");
+
     $old_device_quantity = $old_device_quantity[0]['device_quantity'];
     $new_device_quantity = ($old_device_quantity + $old_out_quantity) - $out_quantity;
     $resultDeviceList = $db->query("UPDATE 
@@ -185,7 +177,7 @@ if ($_POST['action'] === 'edit_bpp') {
     device_quantity='$new_device_quantity' 
     where device_id='$device_id'");
   } else {
-    // roll back device quantity yang lama dulu
+    // [Jika beda] roll back device quantity yang lama dulu
     $old_device_quantity = $db->query("SELECT 
     device_quantity 
     from 
@@ -215,7 +207,7 @@ if ($_POST['action'] === 'edit_bpp') {
 
   $db->commitTransaction();
 
-  $_SESSION['save_status'] = 'Add BPP Sukses!';
+  $_SESSION['save_status'] = 'Edit BPP Sukses!';
 
   $redirectLocation = '../bpp.php';
   header("Location: $redirectLocation");
@@ -227,9 +219,10 @@ if ($_POST['action'] === 'delete_bpp') {
   $is_rollback = ($_POST['is_rollback'] == "true") ? true : false ;
   $bpp_id = $_POST['bpp_id'];
   $device_id = $_POST['device_id'];
+  $out_quantity = $_POST['out_quantity'];
+  
   
   if ($is_rollback) {
-    $out_quantity = $_POST['out_quantity'];
     /**
      * delete bpp
      * update device_quantity
@@ -240,13 +233,10 @@ if ($_POST['action'] === 'delete_bpp') {
     $result_bpp_history_nomor = $db->query("SELECT bpp_history_nomor FROM bpp WHERE bpp_id = '$bpp_id'");
     $bpp_history_nomor = $result_bpp_history_nomor[0]['bpp_history_nomor'];
     $count_bpp_history_nomor = $db->query("SELECT count(*) from bpp where bpp_history_nomor = '$bpp_history_nomor'")[0]['count(*)'];
-
+    
     $resultDeleteBPP = $db->query("DELETE FROM bpp WHERE bpp_id = '$bpp_id'");
-
-    $old_device_quantity = $db->query("SELECT device_quantity from device_list where device_id='$device_id'")[0]['device_quantity'];
-    $new_device_quantity = $old_device_quantity + $out_quantity;
     $resultRollbackDeviceQuantity = $db->query("UPDATE device_list SET
-      device_quantity = '$new_device_quantity'
+      device_quantity = device_quantity + $out_quantity
       WHERE device_id = '$device_id'
     ");
 

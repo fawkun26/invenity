@@ -1,3 +1,19 @@
+Time : 22:45:29
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DAT) AND '2021-05-19 23:59:59'' at line 1
+Raw SQL : SELECT * FROM bpp_history WHERE created_at BETWEEN DATE_SUB('2021-05-19 00:00:00', INTERVAL 7 DAT) AND '2021-05-19 23:59:59'
+
+Time : 20:56:19
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '004/BPP/05/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) VALUES('004/BPP/05/2021')
+
+Time : 20:39:52
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '006/BPP/05/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) VALUES('006/BPP/05/2021')
+
+Time : 20:37:53
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '006/BPP/05/2021' for key 'bpp_history.PRIMARY'
+Raw SQL : INSERT INTO bpp_history(nomor) VALUES('006/BPP/05/2021')
+
 Time : 00:41:47
 SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '001/BPP/01/2021' for key 'bpp_history.PRIMARY'
 Raw SQL : INSERT INTO bpp_history(nomor) values ('001/BPP/01/2021')

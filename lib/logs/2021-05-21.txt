@@ -1,0 +1,19 @@
+Time : 16:20:26
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE device_id = '122'' at line 3
+Raw SQL : UPDATE device_list SET
+      device_quantity = device_quantity + 
+      WHERE device_id = '122'
+
+Time : 16:18:50
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE device_id = '122'' at line 3
+Raw SQL : UPDATE device_list SET
+      device_quantity = device_quantity + 
+      WHERE device_id = '122'
+
+Time : 16:18:13
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'out_quantity' in 'field list'
+Raw SQL : SELECT out_quantity FROM device_list WHERE device_id = '122'
+
+Time : 15:04:56
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UDPATE device_list SET device_quantity=device_quantity + 2  WHERE device_id = 12' at line 1
+Raw SQL : UDPATE device_list SET device_quantity=device_quantity + 2  WHERE device_id = 122

@@ -42,7 +42,7 @@ include("./include/include_header.php");
   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
     <?php
     if (isset($_SESSION['save_status']) && $_SESSION['save_status'] != "") {
-    ?>
+      ?>
 
       <div class='alert alert-info alert-dismissable'>
         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -50,9 +50,22 @@ include("./include/include_header.php");
         </button><?= $_SESSION['save_status'] ?>
       </div>
 
-    <?php $_SESSION["save_status"] = "";
+    <?php unset($_SESSION["save_status"]);
     } ?>
 
+    <?php 
+    if (isset($_SESSION['modal_open']) && isset($_SESSION['modal'])) {
+      if ($_SESSION['modal_open'] == 'true' && $_SESSION['modal'] == 'default' ) { ?>
+        <div id="is_modal_open" data-value="<?= $_SESSION['modal_open'] ?>" hidden></div>
+        <div id="which_modal" data-value="<?= $_SESSION['modal'] ?>" hidden></div>
+      <?php 
+      } else { ?>
+        <div id="is_modal_open" data-value="<?= $_SESSION['modal_open'] ?>" hidden></div>
+        <div id="which_modal" data-value="<?= $_SESSION['modal'] ?>" hidden></div>
+      <?php }}
+      unset($_SESSION['modal_open']);
+      unset($_SESSION['modal']);
+    ?>
 
     <div class="panel panel-primary">
       <div class="panel-body">
@@ -112,7 +125,7 @@ include("./include/include_header.php");
                 <td class="data-edit out_total"><?= $bpp["out_total"] ?></td>
                 <td class="data-edit"><?= $bpp["tanggal"] ?></td>
                 <td>
-                  <button type='button' class='btn btn-sm btn-info glyphicon glyphicon-pencil float-right ml-1 show_modal_edit' data-toggle='modal' data-target='#formModal' data-bpp-id="<?= $bpp['bpp_id'] ?>" data-bpp-history-nomor="<?= $bpp['bpp_history_nomor'] ?>" title='Edit Bpp'>edit</button>
+                  <button type='button' class='btn btn-sm btn-info btn-edit glyphicon glyphicon-pencil float-right ml-1' data-toggle='modal' data-target='#modal_bpp_edit' data-bpp-id="<?= $bpp['bpp_id'] ?>" data-bpp-history-nomor="<?= $bpp['bpp_history_nomor'] ?>" title='Edit Bpp' data-bpp-data='<?= json_encode($bpp) ?>'>edit</button>
                   <button class="btn btn-sm btn-danger btn-delete-bpp glyphicon glyphicon-trash float-right ml-1" data-toggle="modal" data-target="#modal_delete" data-bpp-id="<?= $bpp['bpp_id'] ?>" data-device-id="<?= $bpp['device_id'] ?>" data-out-quantity="<?= $bpp['out_quantity'] ?>" data-no="<?= $key + 1 ?>" data-diminta="<?= $bpp['request_quantity'] ?>" data-satuan="<?= $bpp['request_unit'] ?>" data-uraian="<?= $bpp['request_description'] ?>" data-kode-barang='<?= $code ?>' data-tanggal="<?= $bpp['tanggal'] ?>">Delete</button>
                 </td>
               </tr>
@@ -156,6 +169,7 @@ include("./include/include_header.php");
   // get plugins
   include("./include/init_datatables.php");
   include("./include/include_modal_bpp.php"); 
+  include("./include/include_modal_bpp_edit.php"); 
   include("./include/include_modal_bpp_januari_mei.php"); 
   include('./include/include_modal_bpp_delete.php'); 
   include("./include/init_chosen.php");
