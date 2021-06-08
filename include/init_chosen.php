@@ -3,7 +3,7 @@
 <script type="text/javascript" src="./assets/plugins/chosen/chosen.jquery.min.js"></script>
 <script type="text/javascript">
 	var config = {
-        '.chosen-select'           : {width: '100%'}
+        '.chosen-select'           : {width: '100%', search_contains: true}
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);

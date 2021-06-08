@@ -15,6 +15,7 @@ if (isset($_SESSION["new_out_code"])) {
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_dialog_bpp">
   <div class="modal-dialog modal-lg">
     <form class="form-horizontal" name="form_bpp" id="form_bpp" method="post" action="process/bpp.php">
+    <input type="hidden" name="modal_type" value="default">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal_title_bpp">Add Bpp</h5>
@@ -47,7 +48,7 @@ if (isset($_SESSION["new_out_code"])) {
                   <?php
                   $bpp_histories = $bppHistoryClass->get_between_nowaday_and_7daysago();
                   foreach ($bpp_histories as $key => $history) { ?>
-                    <option value="<?= $history['nomor'] ?>"><?= $history['nomor'] ?></option>
+                    <option value="<?= $history['nomor'] ?>"><?= $history['nomor'] . ' - ' . $history['created_at'] ?></option>
                   <?php } ?>
                 </select>
               </div>
@@ -68,6 +69,7 @@ if (isset($_SESSION["new_out_code"])) {
             <div class="col-sm-6">
               <input required type="number" class="form-control" placeholder="Quantity" name="request_quantity" id="input_request_quantity"><br>
             </div>
+            <div class="col-sm-4">Quantity tersedia: </div>
           </div>
           <div class="form-group">
             <label class="control-label col-sm-2">Unit</label>
@@ -126,6 +128,7 @@ if (isset($_SESSION["new_out_code"])) {
             <div class="col-sm-6">
               <input required type="number" class="form-control" placeholder="Quantity" name="out_quantity" id="input_out_quantity"><br>
             </div>
+            <div class="col-sm-4">Quantity tersedia: </div>
           </div>
           <div class="form-group">
             <label class="control-label col-sm-2">Unit</label>

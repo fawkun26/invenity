@@ -3,7 +3,7 @@
 * Device Class
 * Device management class such as device, device type
 *
-* @author 		Permana Cakra
+* @author 		Permana Cakra | Mohamad Ilham Ramadhan
 * @version 		0.2
 */
 
@@ -26,6 +26,14 @@ class DeviceClass
 		$this->sysClass  	= new SystemClass();
 	}
 
+	public function get_quantity_by_id($ids) {
+		$query = "SELECT device_id, device_quantity FROM device_list WHERE device_id in($ids)";
+		return $this->db->query($query);
+	}
+	public function get_with_type_by_id($ids) {
+		$query = "SELECT device_id, device_serial, type_name, type_code  FROM device_list INNER JOIN device_type USING(type_id) WHERE device_id in($ids)";
+		return $this->db->query($query);
+	}
 
 	/**
 	* Select device type
@@ -395,6 +403,7 @@ class DeviceClass
 	*/
 	public function add_device($dt_device, $dt_photo)
 	{
+		// dd($dt_device);
 		// Set var
 		$device_code        = $dt_device["dev_code"];
 		$type_id            = $dt_device["dev_type_id"];
@@ -402,14 +411,16 @@ class DeviceClass
 		$device_model       = addslashes(trim($dt_device["dev_model"]));
 		// baru
 		$device_quantity    = addslashes(trim($dt_device["dev_quantity"]));
-		$minimum_quantity    = addslashes(trim($dt_device["minimum_quantity"]));
+		$minimum_quantity    = addslashes(trim($dt_device["dev_minimum_quantity"]));
 		// baru
 		$device_color       = addslashes(trim($dt_device["dev_color"]));
 		$device_serial      = addslashes(trim($dt_device["dev_serial"]));
 		$device_description = trim($dt_device["dev_description"]);
 		$device_status      = $dt_device["dev_status"];
 		$location_id        = $dt_device["location_id"];
-		$device_deployment_date = "0000-00-00 00:00:00";
+		$device_deployment_date = "0000-00-00 00:00:00"; // [error] SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '0000-00-00 00:00:00' for column 'device_deployment_date' at row 1
+		$device_deployment_date = "NOW()";
+		// $device_deployment_date = "'2021-06-6 00:00:00'";
 		if ($device_status!="new" ) {
 			$device_deployment_date = "NOW()";
 		}
@@ -540,7 +551,8 @@ class DeviceClass
 					'$device_photo', 
 					'$device_status', 
 					'$location_id', 
-					'$device_deployment_date', 
+					$device_deployment_date, 
+					-- NOW(), 
 					'$_SESSION[username]', 
 					NOW(), 
 					'$_SESSION[username]', 
@@ -584,12 +596,14 @@ class DeviceClass
 	*/
 	public function edit_device($dt_device, $dt_photo)
 	{
+		// dd($dt_device);
 		// Set var
 		$device_id          = $dt_device["dev_id"];
 		$device_brand       = addslashes(trim($dt_device["dev_brand"]));
 		$device_model       = addslashes(trim($dt_device["dev_model"]));
 		// baru
 		$device_quantity    = addslashes(trim($dt_device["dev_quantity"]));
+		$device_minimum_quantity    = addslashes(trim($dt_device["dev_minimum_quantity"]));
 		// baru
 		$device_color       = addslashes(trim($dt_device["dev_color"]));
 		$device_serial      = addslashes(trim($dt_device["dev_serial"]));
@@ -616,6 +630,7 @@ class DeviceClass
 				$c_location_id        = $data["location_id"];
 			}
 			// Changes check
+			$changes = '';
 			if ($device_brand!=$c_device_brand) {
 				$changes .= "Dev brand : $c_device_brand -> $device_brand. ";
 			}
@@ -753,6 +768,7 @@ class DeviceClass
 							device_brand = '$device_brand', 
 							device_model = '$device_model', 
 							device_quantity = '$device_quantity', 
+							minimum_quantity = '$device_minimum_quantity', 
 							device_color = '$device_color', 
 							device_serial = '$device_serial', 
 							device_description = '$device_description', 

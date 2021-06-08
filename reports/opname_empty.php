@@ -19,14 +19,17 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['level'])) {
 
 require_once('../vendor/autoload.php');
 require_once('../class/bpp.class.php');
+require_once('../class/device.class.php');
 require_once('../class/inventory.class.php');
 $bppClass = new BppClass();
 $invClass = new Inventory();
+$devClass = new DeviceClass();
 //  dump(isset($_GET['tanggal']));
-if (isset($_GET['tanggal'])) {
-  $bpp_s = $bppClass->get_all_bpp_by_tanggal($_GET['tanggal']);
+if (isset($_GET['device_ids'])) {
+  $devs = $devClass->get_with_type_by_id($_GET['device_ids']);
 } else {
-  $bpp_s = $bppClass->get_all_bpp();
+  // $bpp_s = $bppClass->get_all_bpp();
+  $devs = null;
 }
 // dd($bpp_s);
 ?>
@@ -56,30 +59,24 @@ if (isset($_GET['tanggal'])) {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>AIR VALVE (Single Drat) 1 type_code=A5 device_serial=2</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>AIR VALVE DOUBLE ALL FLANGE 3 type_code=A4 device_serial=10</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>BAUD & MUR 7/8 x 3 type_code=B10 device_serial=A7X1</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      
+      <?php 
+        if (isset($devs)) {
+          foreach ($devs as $dev ) { ?>
+            <tr>
+              <td><?= $dev['type_name'] ?> type_code=<?= $dev['type_code'] ?> device_serial=<?= $dev['device_serial'] ?></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+    <?php }
+        }
+      ?>
     </tbody>
   </table>
 
   <script>
     window.PagedConfig = {
+      // auto: false,
         // Setelah halaman ke render maka tampilkan dialog print
         after: (flow) => { window.print(); },
     };

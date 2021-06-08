@@ -1,0 +1,23 @@
+Time : 13:13:06
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : SELECT device_id, device_quantity FROM device_list WHERE device_id in()
+
+Time : 13:12:43
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : SELECT device_id, device_quantity FROM device_list WHERE device_id in()
+
+Time : 13:12:27
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : SELECT device_id, device_quantity FROM device_list WHERE device_id in()
+
+Time : 13:08:31
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : SELECT device_id, device_quantity FROM device_list WHERE device_id in('3', '123', '2', '137', )
+
+Time : 13:08:30
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : SELECT device_id, device_quantity FROM device_list WHERE device_id in('3', '123', '2', '137', )
+
+Time : 13:08:12
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : SELECT device_id, device_quantity FROM device_list WHERE device_id in('3', '123', '2', '137', )

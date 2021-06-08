@@ -4,6 +4,7 @@ session_start();
 /**
 	 	 	 	 	 	 	 	 	 	 	  *	Required Class
 	 	 	 	 	 	 	 	 	 	 	  */
+require_once __DIR__ . '/vendor/autoload.php';
 require_once(__DIR__ . '/lib/db.class.php');
 $db        = new DB();
 require_once(__DIR__ . '/class/user.class.php');
@@ -306,6 +307,7 @@ if (isset($_POST["action"])) {
 
 	// Add device
 	elseif ($action == "add_device") {
+		// dd($_POST);
 		$adv_device = $devClass->add_device($_POST, $_FILES);
 		// break
 		$adv_break   = explode("|", $add_device);
@@ -323,6 +325,8 @@ if (isset($_POST["action"])) {
 
 	// Edit device
 	elseif ($action == "edit_device") {
+		// dd($_POST);
+
 		$edit_device = $devClass->edit_device($_POST, $_FILES);
 		// break
 		$edv_break   = explode("|", $edit_device);

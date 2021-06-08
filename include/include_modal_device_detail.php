@@ -26,6 +26,10 @@
                 </div>
                 <!-- baru -->
                 <div class="form-group">
+                    <label class="control-label col-sm-3">Minimum Quantity :</label>
+                    <div class="col-sm-8 form-control-static" id="dl_dev_minimum_quantity"> </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-sm-3">Quantity :</label>
                     <div class="col-sm-8 form-control-static" id="dl_dev_quantity"> </div>
                 </div>

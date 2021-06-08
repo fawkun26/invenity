@@ -1,6 +1,9 @@
 .d-flex {
   display: flex;
 }
+.d-inline-block {
+  display: inline-block !important;
+}
 .items-center {
   align-items: center;
 }
@@ -21,6 +24,12 @@
 }
 .mb-3 {
   margin-bottom: 24px !important;
+}
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+.mt-5 {
+  margin-top: 3rem !important;
 }
 .ml-auto {
   margin-left: auto !important;
@@ -56,6 +65,7 @@
 .bg-white {
   background-color: white;
 }
+/* Stock-opname [start] */
 .breadcrumb-progress {
   display: flex;
   padding: 0;
@@ -74,6 +84,9 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+.breadcrumb-progress > li.disabled {
+  cursor: not-allowed;
 }
 .breadcrumb-progress > li > span {
   z-index: 2;
@@ -100,8 +113,9 @@
   background-color: var(--blue);
   border-top: 2px solid var(--white);
   border-right: 2px solid var(--white);
-
 }
+/* Stock-opname [end]*/
+
 
 .card {
   background-color: white;

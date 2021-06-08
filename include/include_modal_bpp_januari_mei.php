@@ -15,6 +15,7 @@ if (isset($_SESSION["new_out_code"])) {
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_dialog_bpp_januari_mei">
   <div class="modal-dialog modal-lg">
     <form class="form-horizontal" name="form_bpp" id="form_bpp_januari_mei" method="post" action="process/bpp.php">
+      <input type="hidden" name="modal_type" value="januari_mei">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal_title_bpp_januari_mei">Add Bpp</h5>
@@ -70,7 +71,7 @@ if (isset($_SESSION["new_out_code"])) {
                     <?php
                     $bpp_histories = $bppHistoryClass->get_between_january_may();
                     foreach ($bpp_histories as $key => $history) { ?>
-                      <option value="<?= $history['nomor'] ?>"><?= $history['nomor'] ?></option>
+                      <option value="<?= $history['nomor'] ?>"><?= $history['nomor'] . ' - ' . $history['created_at'] ?></option>
                     <?php } ?>
                   </select>
                 </div>

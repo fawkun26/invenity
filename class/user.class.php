@@ -10,6 +10,7 @@
 require_once(__DIR__ . '/../lib/db.class.php');
 require_once(__DIR__ . '/../class/inventory.class.php');
 require_once(__DIR__ . '/../class/system.class.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 class UserClass
 {
@@ -240,6 +241,7 @@ class UserClass
 	*/
 	public function add_user($dt_user, $photo="")
 	{
+
 		// assign variable
 		$first_name = addslashes(trim($dt_user["first_name"]));
 		$last_name  = addslashes(trim($dt_user["last_name"]));
@@ -247,6 +249,9 @@ class UserClass
 		$salt       = hash("SHA256", rand());
 		$password   = hash("SHA512", $dt_user["password"].$salt);
 		$active     = $dt_user["active"];
+		if (!isset($dt_user['privileges'])) {
+			$dt_user['privileges'] = [];
+		}
 		$privileges = $dt_user["privileges"];
 		// $photo      = $dt_user["photo"];
 
@@ -330,13 +335,13 @@ class UserClass
 
 				if ($process_photo_upload==0) {
 					// set var
-					$user_photo           = "./assets/images/user_photos/standard_photo.jpg";
+					$user_photo           = "./assets/images/user_photos/standard_photo.png";
 					$process_photo_upload = 1;
 				}
 			}
 			else {
 				// set var
-				$user_photo           = "./assets/images/user_photos/standard_photo.jpg";
+				$user_photo           = "./assets/images/user_photos/standard_photo.png";
 				$process_photo_upload = 1;
 			}
 
@@ -354,24 +359,33 @@ class UserClass
 				}
 
 				// check additional privileges
-				$user_privileges = "";
-				$i               = 0;
-				$total           = count($privileges);
-				foreach ($privileges as $privileges) {
-					$i++;
-					if ($i!=$total && $privileges!="") {
-						$user_privileges .= "$privileges ";
+				// dd($privileges);
+				// $user_privileges = "";
+				// $i               = 0;
+				// $total           = count($privileges);
+				// foreach ($privileges as $privileges) {
+				// 	$i++;
+				// 	if ($i!=$total && $privileges!="") {
+				// 		$user_privileges .= "$privileges ";
+				// 	}
+				// }
+				// trim($user_privileges);
+				// if ($user_privileges!="") {
+				// 	str_replace(" ", ",", $user_privileges);
+				// 	$user_privileges = "5,6,7,".$user_privileges;
+				// }
+				// else {
+				// 	$user_privileges = "5,6,7";
+				// }
+
+				// jika additionals privileges lebih dari 0
+				$user_privileges = '5,6,7,';
+				if (count($privileges) > 0) {
+					foreach ($privileges as $privilege ) {
+						$user_privileges .= $privilege . ',';
 					}
 				}
-				trim($user_privileges);
-				if ($user_privileges!="") {
-					str_replace(" ", ",", $user_privileges);
-					$user_privileges = "5,6,7,".$user_privileges;
-				}
-				else {
-					$user_privileges = "5,6,7";
-				}
-
+				$user_privileges = rtrim($user_privileges, ',');
 				// create query privileges
 				$query   = "INSERT INTO user_privileges (username, privileges, created_by, created_date, updated_by, updated_date, revision) VALUES ('$username', '$user_privileges', '$_SESSION[username]', NOW(), '$_SESSION[username]', NOW(), '0')";
 
@@ -409,18 +423,28 @@ class UserClass
 	*/
 	public function edit_user($dt_user, $photo="")
 	{
+		// dump($dt_user);
+		// dump($photo);
+		// dump($_FILES);
+		// dump($_SESSION);
+		// die();
+
 		$username   = $dt_user["username"];
 		$first_name = $dt_user["first_name"];
 		$last_name  = $dt_user["last_name"];
+		if (!isset($dt_user['privileges'])) {
+			$dt_user['privileges'] = [];
+		}
 		$privileges = $dt_user["privileges"];
 
 		if ($dt_user["password"]!="") {
 			$salt       = hash("SHA256", rand());
 			$password   = hash("SHA512", $dt_user["password"].$salt);
 		}
-
+		// dump($photo['photo']);
+		// die();
 		// upload photo if photo set
-		if ($photo["name"]!="") {
+		if ($photo["photo"]!="") {
 			// set var | upload
 			// $ppu = $this->photo_upload($username, $photo);
 			// Init var
@@ -459,9 +483,17 @@ class UserClass
 
 						// Upload file process
 						if(empty($errors)==true){
+							// delete photo lama jika upload photo baru
+							// if () {}
+							$old_photo_path = $this->db->query("SELECT photo FROM users WHERE username = '$username' ")[0]['photo'];
+							unlink($old_photo_path); 
 							// Upload
-							move_uploaded_file($file_tmp, $location.$new_photo_name);
+							$uploaded = move_uploaded_file($file_tmp, $location.$new_photo_name);
 							$save_count = $save_count+1;
+							// update $_SESSION['user_photo'] untuk di sidebar
+							if ($username == $_SESSION['username']) {
+								$_SESSION['user_photo'] = $location.$new_photo_name;
+							}
 						}
 						else {
 							// Set error count flag and notification
@@ -483,10 +515,14 @@ class UserClass
 			}
 
 			// break process and notification
-			$ppu_break                 = explode("|", $ppu);
+			// $ppu_break                 = explode("|", $ppu_break);
 			$process_photo_upload      = $save_count;
 			$notification_photo_upload = $notification;
-			$photo_query               = " photo='".$location.$new_photo_name."', ";
+			if ($photo['photo']['name'] == '') {
+				$photo_query = '';
+			} else {
+				$photo_query               = " photo='".$location.$new_photo_name."', ";
+			}
 		}
 		else {
 			// set var
@@ -518,24 +554,36 @@ class UserClass
 			// check additional privileges
 			if ($privileges!="*") {
 				// 5,6,7 -> standard setting (device [5] and location [6] and report [7])
-				$user_privileges = "";
-				$i               = 0;
-				$total           = count($privileges);
-				foreach ($privileges as $privilege) {
-					$i++;
-					if ($i<=$total && $privilege!="") {
-						$user_privileges .= "$privilege ";
+				// $user_privileges = "";
+				// $i               = 0;
+				// $total           = count($privileges);
+				// foreach ($privileges as $privilege) {
+				// 	$i++;
+				// 	if ($i<=$total && $privilege!="") {
+				// 		$user_privileges .= "$privilege ";
+				// 	}
+				// }
+
+				// if ($user_privileges!="") {
+				// 	$user_privileges = str_replace(" ", ",", trim($user_privileges));
+				// 	$user_privileges = "5,6,7,".$user_privileges;
+				// }
+				// else {
+				// 	$user_privileges = "5,6,7";
+				// }
+				
+				// Jika $privileges type == string berarti dari edit profile (my_profile.php)
+				if (gettype($privileges) == 'string') {
+					$user_privileges = $privileges;
+				} else {
+					$user_privileges = '5,6,7,';
+					if (count($privileges) > 0) {
+						foreach ($privileges as $privilege ) {
+							$user_privileges .= $privilege . ',';
+						}
 					}
+					$user_privileges = rtrim($user_privileges, ',');
 				}
-
-				if ($user_privileges!="") {
-					$user_privileges = str_replace(" ", ",", trim($user_privileges));
-					$user_privileges = "5,6,7,".$user_privileges;
-				}
-				else {
-					$user_privileges = "5,6,7";
-				}
-
 				// create query privileges
 				$query   = "UPDATE user_privileges SET privileges='$user_privileges', updated_by='$_SESSION[username]', updated_date=NOW(), revision=revision+1 WHERE username='$username'";
 
@@ -638,5 +686,3 @@ class UserClass
 
 
 }
-
-?>

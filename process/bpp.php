@@ -30,9 +30,6 @@ $bppClass  = new Bpp_model();
  * Add bpp
  */
 if ($_POST['action'] === 'add_bpp') {
-
-  // dd($_POST);
-
   $bpp_history_nomor = $_POST['select_bpp_history'];
   $request_quantity = $_POST['request_quantity'];
   $request_unit = $_POST['request_unit'];
@@ -41,18 +38,23 @@ if ($_POST['action'] === 'add_bpp') {
   $out_unit = $_POST['out_unit'];
   $device_id = $_POST['request_code'];
   $out_total = $_POST['out_total'];
-  $tanggal = date('Y-m-d');
   $created_by = $_SESSION['username'];
-  $created_date = date('Y-m-d h:i:s');
   $updated_by = $created_by;
-  $updated_date = $created_date;
-
-  $nomor = $bpp_history_nomor;
-  $created_at = $created_date;
-
   $db->beginTransaction();
-
-
+  // if januari - mei
+  if ($_POST['modal_type'] == 'januari_mei') {
+    $created_at = $db->query("SELECT created_at FROM bpp_history WHERE nomor = '$_POST[select_bpp_history]'");
+    $created_at = $created_at[0]['created_at'];
+  } else {
+    $created_at = date('Y-m-d h:i:s');
+  }
+  $updated_at = $created_at;
+  
+  $nomor = $bpp_history_nomor;
+  $created_at = $created_at;
+  
+  
+  
   $resultBpp = $db->query("INSERT INTO bpp(
     bpp_history_nomor, 
     request_quantity, 
@@ -62,11 +64,10 @@ if ($_POST['action'] === 'add_bpp') {
     out_unit, 
     device_id, 
     out_total, 
-    tanggal, 
     created_by, 
-    created_date, 
+    created_at, 
     updated_by, 
-    updated_date) 
+    updated_at) 
     values (
       '$bpp_history_nomor', 
       '$request_quantity', 
@@ -76,11 +77,10 @@ if ($_POST['action'] === 'add_bpp') {
       '$out_unit', 
       '$device_id', 
       '$out_total', 
-      '$tanggal', 
       '$created_by', 
-      '$created_date', 
+      '$created_at', 
       '$updated_by', 
-      '$updated_date')");
+      '$updated_at')");
 
   $insertedBppId = $db->lastInsertId();
 
@@ -116,7 +116,13 @@ if ($_POST['action'] === 'add_bpp') {
 
 
   $_SESSION['save_status'] = 'Add BPP Sukses!';
-
+    // untuk membuka modal otomatis
+  $_SESSION['modal_open'] = 'true';
+  if ($_POST['modal_type'] == 'default') {
+    $_SESSION['modal'] = 'default';
+  } else {
+    $_SESSION['modal'] = 'januari_mei';
+  }
   $redirectLocation = '../bpp.php';
   header("Location: $redirectLocation");
   die();
@@ -139,10 +145,10 @@ if ($_POST['action'] === 'edit_bpp') {
   $out_total = $_POST['out_total'];
   // $tanggal = date('Y-m-d');
   $updated_by = $_SESSION['username'];
-  $updated_date = date('Y-m-d h:i:s');
+  $updated_at = date('Y-m-d h:i:s');
 
   // $nomor = $bpp_history_nomor;
-  // $created_at = $created_date;
+  // $created_at = $created_at;
 
   $db->beginTransaction();
 
@@ -157,7 +163,7 @@ if ($_POST['action'] === 'edit_bpp') {
     out_total='$out_total',
     device_id='$device_id',
     updated_by='$updated_by',
-    updated_date='$updated_date'
+    updated_at='$updated_at'
     WHERE bpp_id = '$bpp_id'
   ");
   
@@ -267,4 +273,18 @@ if ($_POST['action'] === 'delete_bpp') {
   $redirectLocation = '../bpp.php';
   header("Location: $redirectLocation");
   die();
+}
+
+if ($_POST['action'] == 'setting_report_bpp') {
+      // save ke session
+      $_SESSION['bpp_report_setting']['diminta'] = $_POST['diminta'];
+      $_SESSION['bpp_report_setting']['diterima'] = $_POST['diterima'];
+      $_SESSION['bpp_report_setting']['kasubag_logistik'] = $_POST['kasubag_logistik'];
+      $_SESSION['bpp_report_setting']['gm_teknik_1'] = $_POST['gm_teknik_1'];
+      $_SESSION['bpp_report_setting']['gm_teknik_2'] = $_POST['gm_teknik_2'];
+      $_SESSION['bpp_report_setting']['kabag'] = $_POST['kabag'];
+  
+      $redirectLocation = '../bpp.php';
+      header("Location: $redirectLocation");
+      die();
 }

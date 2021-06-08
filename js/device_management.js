@@ -20,6 +20,7 @@ jQuery(document).ready(function($) {
 		$("#dl_dev_code").html($("#l_dev_code_"+device_id).val());
 		$("#dl_dev_type").html($("#l_dev_type_name_"+device_id).val());
 		$("#dl_dev_brand").html($("#l_dev_brand_"+device_id).val());
+		$("#dl_dev_minimum_quantity").html($("#l_dev_minimum_quantity_"+device_id).val());
 		$("#dl_dev_quantity").html($("#l_dev_quantity_"+device_id).val());
 		$("#dl_dev_model").html($("#l_dev_model_"+device_id).val());
 		$("#dl_dev_color").html($("#l_dev_color_"+device_id).val());
@@ -120,6 +121,7 @@ jQuery(document).ready(function($) {
 		$("#dev_brand").val($("#l_dev_brand_"+device_id).val());
 		$("#dev_model").val($("#l_dev_model_"+device_id).val());
 		// baru
+		$("#dev_minimum_quantity").val($("#l_dev_minimum_quantity_"+device_id).val());
 		$("#dev_quantity").val($("#l_dev_quantity_"+device_id).val());
 		// baru
 		$("#dev_color").val($("#l_dev_color_"+device_id).val());

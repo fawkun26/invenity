@@ -215,28 +215,50 @@ class BppClass
 	}
 
 	public function get_all_bpp() {
-		$query = "SELECT bpp_id, bpp_history_nomor, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id";
+		$query = "SELECT bpp_id, bpp_history_nomor, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, DATE_FORMAT(created_at, '%Y-%m-%d') as created_at FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id ORDER BY created_at DESC";
 
 		$result = $this->db->query($query);
 		return $result;
 	}
 
 	public function get_all_distinct_tanggal() {
-		$query = "SELECT DISTINCT tanggal FROM bpp";
+		$query = "SELECT DISTINCT DATE_FORMAT(created_at, '%Y-%m-%d') as created_at FROM bpp";
+		$result = $this->db->query($query);
+		return $result;
+	}
+
+	public function get_all_distinct_bulan() {
+		$query = "SELECT DISTINCT DATE_FORMAT(created_at, '%m') as created_at FROM bpp ORDER BY created_at";
+		$result = $this->db->query($query);
+		return $result;
+	}
+	public function get_all_distinct_tahun() {
+		$query = "SELECT DISTINCT DATE_FORMAT(created_at, '%Y') as created_at FROM bpp ORDER BY created_at";
 		$result = $this->db->query($query);
 		return $result;
 	}
 
 	// Untuk Report BPP
-	public function get_all_bpp_by_tanggal($tanggal) {
-		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE tanggal = '$tanggal'";
+	public function get_all_bpp_by_tanggal($created_at) {
+		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, created_at FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE DATE(created_at) = '$created_at'";
+		$result = $this->db->query($query);
+		return $result;
+	}
+	public function get_all_bpp_by_bulan($bulan) {
+		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, created_at FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE MONTH(created_at) = '$bulan'";
+		$result = $this->db->query($query);
+		return $result;
+	}
+	public function get_all_bpp_by_tahun($tahun) {
+		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, created_at FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE YEAR(created_at) = '$tahun'";
 		$result = $this->db->query($query);
 		return $result;
 	}
 
+
 	public function get_all_bpp_by_bpp_history_nomor($history) 
 	{
-		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE bpp_history_nomor = '$history'";
+		$query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, created_at FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE bpp_history_nomor = '$history'";
 		$result = $this->db->query($query);
 		return $result;	
 	}

@@ -35,9 +35,10 @@
 				} ?>
 			</title>
 			<!-- Styling -->
-			<link rel="stylesheet" type="text/css" href="./assets/css/<?php if ($invClass->setting_data("color_scheme")!="") { echo $invClass->setting_data("color_scheme"); } else {echo "site-default.min.css";} ?>">
-			<!-- <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css"> -->
+			<link rel="stylesheet" type="text/css" href="./assets/css/<?php  if ($invClass->setting_data("color_scheme")!="") { echo $invClass->setting_data("color_scheme"); } else {echo "site-default.min.css";} ?>">
+			<!-- <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap5.min.css"> -->
 			<link rel="stylesheet" type="text/css" href="./assets/plugins/pace/pace.css">
+
 			<link rel="icon" href="./assets/images/favicon.png">
 			<link rel="stylesheet" href="./assets/css/style.css">
 		</head>

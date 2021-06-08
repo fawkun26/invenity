@@ -1,0 +1,41 @@
+Time : 14:13:27
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'update_at' in 'field list'
+Raw SQL : UPDATE bpp SET
+    bpp_history_nomor='008/BPP/05/2021',
+    request_quantity='3',
+    request_unit='buah',
+    request_description='Pengeluaran valve 666',
+    out_quantity='3',
+    out_unit='buah',
+    out_total='3',
+    device_id='135',
+    updated_by='admin',
+    update_at='2021-06-01 02:13:27'
+    WHERE bpp_id = '274'
+
+Time : 13:53:10
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'update_at' in 'field list'
+Raw SQL : UPDATE bpp SET
+    bpp_history_nomor='008/BPP/05/2021',
+    request_quantity='3',
+    request_unit='buah',
+    request_description='Pengeluaran valve 666',
+    out_quantity='3',
+    out_unit='buah',
+    out_total='3',
+    device_id='135',
+    updated_by='admin',
+    update_at='2021-06-01 01:53:10'
+    WHERE bpp_id = '274'
+
+Time : 12:24:47
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1', 'buah', '122', '1', 'admin', '2021-06-01 12:24:47', 'admin', '2021-06-01 12:' at line 1
+Raw SQL : INSERT INTO bpp (bpp_history_nomor, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, created_by, created_at, updated_by, updated_at) VALUES ('007/BPP/05/2021', '1', 'buah', 'Pengeluaran valve 1\', '1', 'buah', '122', '1', 'admin', '2021-06-01 12:24:47', 'admin', '2021-06-01 12:24:47' )
+
+Time : 11:43:31
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'created_date' in 'field list'
+Raw SQL : INSERT INTO bpp (bpp_history_nomor, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, created_by, created_date, updated_by, updated_date) VALUES ('008/BPP/05/2021', '5', 'buah', 'Pengeluaran valve ganteng', '5', 'buah', '133', '5', 'admin', '2021-06-01 11:43:31', 'admin', '2021-06-01 11:43:31' )
+
+Time : 11:41:49
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tanggal' in 'field list'
+Raw SQL : INSERT INTO bpp (bpp_history_nomor, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, created_by, created_date, updated_by, updated_date) VALUES ('008/BPP/05/2021', '5', 'buah', 'Pengeluaran valve ganteng', '5', 'buah', '133', '5', '2021-06-01', 'admin', '2021-06-01 11:41:49', 'admin', '2021-06-01 11:41:49' )

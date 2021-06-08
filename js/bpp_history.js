@@ -17,6 +17,9 @@ const $inputOutQuantityEdit = $("#input_out_quantity_edit");
 const $inputOutTotalEdit = $("#input_out_total_edit");
 const $inputRequestUnitEdit = $("#input_request_unit_edit");
 const $inputOutUnitEdit = $("#input_out_unit_edit");
+const $isEditableBppHistory = $('#is_editable_bpp_history');
+const $isAdminBppHistory = $('#is_admin_bpp_history');
+const $btnTambahBPP = $('#btn_tambah_bpp')
 
 let table_modal = $('#table_modal').DataTable({
   drawCallback: function(settings) {
@@ -45,6 +48,14 @@ let table_modal = $('#table_modal').DataTable({
       $('#old_device_id_edit').val(dataBPP.device_id);
       $('#select_bpp_history_edit').val(bppHistoryNomor).trigger('chosen:updated');
     });
+    // fitur spare 7 hari BPP&BPP History : hide btn edit dan delete jika lewat 7 hari
+    if ($isEditableBppHistory.data('is-editable')) {
+      $('.btn-delete-bpp').show();
+      $('.btn-edit-bpp').show();
+    } else {
+      $('.btn-delete-bpp').hide();
+      $('.btn-edit-bpp').hide();
+    }
   },
   columns: [{
       data: null
@@ -128,9 +139,27 @@ if (bppHistoryNomorHidden) {
 }
 $('.btn-detail').click(function(e) {
   const bppHistoryNomor = $(this).data('bpp-history-nomor');
+  const createdAt = new Date($(this).data('tanggal'));
+  const now = new Date();
+  const diffInDays = (now.getTime() - createdAt.getTime()) / (1000 * 3600 * 24); 
   ajaxBppHistoryDetail(bppHistoryNomor);
   $('.label-bpp-history-nomor').text(bppHistoryNomor);
   $('#input_bpp_history_nomor').val(bppHistoryNomor);
+  // check apakah user level == 'admin' 
+  if ($isAdminBppHistory.data('is-admin')) {
+    $btnTambahBPP.sho();
+    $isEditableBppHistory.data('is-editable', true);
+  } else {
+    // fitur spare 7 hari input BPP di BPP_history
+    $isEditableBppHistory.data('is-editable', false);
+    if ( diffInDays.toFixed() > 7) {
+      $btnTambahBPP.hide();
+      // $isEditableBppHistory.data('is-editable', false);
+    } else {
+      // $isEditableBppHistory.data('is-editable', true);
+      $btnTambahBPP.show();
+    }
+  }
 });
 
 $('.btn-delete').click(function(e) {

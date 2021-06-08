@@ -1,0 +1,115 @@
+Time : 20:32:53
+SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'device_id' at row 1
+Raw SQL : INSERT INTO 
+			device_changes (device_id, changes, updated_by, updated_date) 
+								VALUES (
+									'', 
+									'Dev brand : Angel Steel -> localzz. Dev model : AV7 -> cxz. Dev quantity : 7 -> 19. Dev color : Black -> BLUE. Dev serial : 666 -> 3. Dev description : <p>mantep</p> -> <p>dwadawd</p>. Dev status : in use -> new. Dev location id : 1 -> 2. ',
+									'admin', NOW())
+
+Time : 20:32:38
+SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'device_id' at row 1
+Raw SQL : INSERT INTO 
+			device_changes (device_id, changes, updated_by, updated_date) 
+								VALUES (
+									'', 
+									'Dev brand : Angel Steel -> XXX. Dev model : AV7 -> Baru. Dev quantity : 7 -> 15. Dev color : Black -> BLUE. Dev serial : 666 -> 1. Dev description : <p>mantep</p> -> <p>XXXX</p>. Dev status : in use -> new. Dev location id : 1 -> 2. ',
+									'admin', NOW())
+
+Time : 20:28:51
+SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'device_id' at row 1
+Raw SQL : INSERT INTO 
+			device_changes (device_id, changes, updated_by, updated_date) 
+								VALUES (
+									'', 
+									'Dev brand : Angel Steel -> XXX. Dev model : AV7 -> Baru. Dev quantity : 7 -> 15. Dev color : Black -> BLUE. Dev serial : 666 -> 1. Dev description : <p>mantep</p> -> <p>XXXX</p>. Dev status : in use -> new. Dev location id : 1 -> 2. ',
+									'admin', NOW())
+
+Time : 20:27:44
+SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'device_id' at row 1
+Raw SQL : INSERT INTO 
+			device_changes (device_id, changes, updated_by, updated_date) 
+								VALUES (
+									'', 
+									'Dev brand : Angel Steel -> XXX. Dev model : AV7 -> Baru. Dev quantity : 7 -> 15. Dev color : Black -> BLUE. Dev serial : 666 -> 1. Dev description : <p>mantep</p> -> <p>XXXX</p>. Dev status : in use -> new. Dev location id : 1 -> 2. ',
+									'admin', NOW())
+
+Time : 15:12:58
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND active = 'yes' ORDER BY component_type DESC' at line 1
+Raw SQL : SELECT component_id, component_name, component_page FROM component WHERE component_id IN () AND active = 'yes' ORDER BY component_type DESC
+
+Time : 15:12:01
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND active = 'yes' ORDER BY component_type DESC' at line 1
+Raw SQL : SELECT component_id, component_name, component_page FROM component WHERE component_id IN () AND active = 'yes' ORDER BY component_type DESC
+
+Time : 14:16:01
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:01
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:01
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:01
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:01
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:00
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:00
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:00
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:16:00
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:59
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:59
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:59
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:59
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:59
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:58
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:57
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:57
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:57
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:57
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:57
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:56
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:56
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:54
+SQLSTATE[HY000] [2006] MySQL server has gone away
+
+Time : 14:15:26
+SQLSTATE[HY000] [2002] Connection refused

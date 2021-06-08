@@ -14,19 +14,19 @@ require_once(__DIR__ . '/../class/inventory.class.php');
 $invClass  = new Inventory();
 require_once(__DIR__ . '/../class/system.class.php');
 $sysClass  = new SystemClass();
-require_once(__DIR__ . '/../class/Bpp_model.php');
-$bppClass  = new Bpp_model();
+require_once(__DIR__ . '/../class/bpp_history.class.php');
+$bppHistoryClass  = new BPPHistoryClass();
 
 use Carbon\Carbon;
 
 if (count($_GET) > 0 && count($_POST) == 0) {
   if ($_GET['action'] == 'get_all_bpp_of_bpp_history') {
     $nomor = $_GET['nomor'];
-    $query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE bpp_history_nomor = '$nomor'";
+    // $query = "SELECT bpp_id, request_quantity, request_unit, type.type_name, type.type_code, device.device_serial, request_description, out_quantity, out_unit, device_id, out_total, tanggal FROM bpp INNER JOIN device_list AS device USING(device_id) INNER JOIN device_type AS type ON device.type_id = type.type_id WHERE bpp_history_nomor = '$nomor'";
 
-    $result = $db->query($query);
+    // $result = $db->query($query);
     // $arr = ['name' => 'ilham', 'skill' => 'fullstack'];
-    echo json_encode($result);
+    echo json_encode($bppHistoryClass->get_all_bpp_of_bpp_history($nomor));
     die();
   }
 }
@@ -34,6 +34,7 @@ if (count($_GET) > 0 && count($_POST) == 0) {
 // create BPP History
 if (count($_POST) > 0) {
   if ($_POST['action'] == 'create_bpp_history') {
+    // dd('create bpp history');
 
     $bulan = Carbon::now()->format('m');
     // $bulan = '05';
@@ -64,8 +65,13 @@ if (count($_POST) > 0) {
     // untuk membuka modal otomatis
     $_SESSION['modal_open'] = 'true';
     $_SESSION['modal'] = 'default';
-
-    $redirectLocation = '../bpp.php';
+    if (isset($_POST['redirect'])) {
+      if ($_POST['redirect'] == 'bpp_history') {
+        $redirectLocation = '../bpp_history.php';
+      }
+    } else {
+      $redirectLocation = '../bpp.php';
+    }
     header("Location: $redirectLocation");
     die();
   }
@@ -144,16 +150,14 @@ if (count($_POST) > 0) {
     $out_unit = $_POST['out_unit'];
     $device_id = $_POST['request_code'];
     $out_total = $_POST['out_total'];
-    $tanggal = date('Y-m-d');
     $created_by = $_SESSION['username'];
-    $created_date = date('Y-m-d h:i:s');
+    $created_at = date('Y-m-d h:i:s');
     $updated_by = $created_by;
-    $updated_date = $created_date;
-    $created_at = $created_date;
+    $updated_at = $created_at;
 
     $db->beginTransaction();
     // Insert BPP
-    $query = "INSERT INTO bpp (bpp_history_nomor, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, tanggal, created_by, created_date, updated_by, updated_date) VALUES ('$bpp_history_nomor', '$request_quantity', '$request_unit', '$request_description', '$out_quantity', '$out_unit', '$device_id', '$out_total', '$tanggal', '$created_by', '$created_date', '$updated_by', '$updated_date' )";
+    $query = "INSERT INTO bpp (bpp_history_nomor, request_quantity, request_unit, request_description, out_quantity, out_unit, device_id, out_total, created_by, created_at, updated_by, updated_at) VALUES ('$bpp_history_nomor', '$request_quantity', '$request_unit', '$request_description', '$out_quantity', '$out_unit', '$device_id', '$out_total', '$created_by', '$created_at', '$updated_by', '$updated_at' )";
     $db->query($query);
     // Update `device_list` device_quantity
     $query = "UPDATE device_list SET device_quantity=device_quantity - '$out_quantity' WHERE device_id = '$device_id'";
@@ -188,12 +192,11 @@ if (count($_POST) > 0) {
     $out_unit = $_POST['out_unit'];
     $new_device_id = $_POST['request_code'];
     $out_total = $_POST['out_total'];
-    // $tanggal = date('Y-m-d');
     $updated_by = $_SESSION['username'];
-    $updated_date = date('Y-m-d h:i:s');
+    $updated_at = date('Y-m-d h:i:s');
 
     // $nomor = $bpp_history_nomor;
-    // $created_at = $created_date;
+    // $created_at = $created_at;
 
     $db->beginTransaction();
 
@@ -208,7 +211,7 @@ if (count($_POST) > 0) {
       out_total='$out_total',
       device_id='$new_device_id',
       updated_by='$updated_by',
-      updated_date='$updated_date'
+      updated_at='$updated_at'
       WHERE bpp_id = '$bpp_id'
     ");
 
@@ -260,4 +263,19 @@ if (count($_POST) > 0) {
     die();
   }
   // == Edit BPP [END]
+
+
+  if ($_POST['action'] == 'setting_report_bpp_history') {
+    // save ke session
+    $_SESSION['bpp_history_report_setting']['diminta'] = $_POST['diminta'];
+    $_SESSION['bpp_history_report_setting']['diterima'] = $_POST['diterima'];
+    $_SESSION['bpp_history_report_setting']['kasubag_logistik'] = $_POST['kasubag_logistik'];
+    $_SESSION['bpp_history_report_setting']['gm_teknik_1'] = $_POST['gm_teknik_1'];
+    $_SESSION['bpp_history_report_setting']['gm_teknik_2'] = $_POST['gm_teknik_2'];
+    $_SESSION['bpp_history_report_setting']['kabag'] = $_POST['kabag'];
+
+    $redirectLocation = '../bpp_history.php';
+    header("Location: $redirectLocation");
+    die();
+  }
 }

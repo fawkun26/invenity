@@ -1,0 +1,24 @@
+        <?php 
+        for ($i=0; $i < 47; $i++) { ?>
+          <tr class="align-middle" id="tr_konten">
+            <td>7</td>
+            <td>buah</td>
+            <td>BAUD & MUR 7/8 x 3(B10) (A7X1)</td>
+            <td>Pengeluaran Baud Mur 7/8</td>
+            <td>7</td>
+            <td>buah</td>
+            <td>BAUD & MUR 7/8 x 3(B10) (A7X1)</td>
+            <td>7</td>
+          </tr>
+        <?php } ?>
+
+=== Report | paged.js ===
+
+1. @page{ size } only supported:
+  - Chromium
+  - Google Chrome
+  - Brave
+  - Opera
+  - browser yang lain butuh: to manually change the PDF size when you generate it (in the custom sizes).
+
+2. The result will not always be the same from one browser to another because they don’t use the same browser engine. For example, line-height is not managed in the same way on Firefox and Chrome. 

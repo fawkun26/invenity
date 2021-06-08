@@ -3,7 +3,7 @@
 * Inventory Class
 * All inventory system needs
 *
-* @author 		Permana Cakra
+* @author 		Permana Cakra| Mohamad Ilham Ramadhan
 * @version 		0.1
 */
 
@@ -131,6 +131,10 @@ class Inventory
 	*	
 	*/
 
-
+	public function get_web_address() {
+		$query = "SELECT setting_name, setting_value FROM system_settings WHERE setting_name = 'inventory_website'";
+		
+		return $this->db->query($query)[0]['setting_value'] ;
+	}
 }
 ?>

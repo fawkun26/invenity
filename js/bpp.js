@@ -183,7 +183,7 @@ $(".btn-edit").click(function (e) {
 });
 // * edit bpp [end]
 
-// === Code untuk modal delete BPP
+// === Code untuk modal delete BPP [start]
 $('[data-toggle="tooltip"]').tooltip();
 
 $(".btn-delete-bpp").click(function (e) {
@@ -205,9 +205,43 @@ $(".btn-delete-bpp").click(function (e) {
   $('[data-holder="span-dikeluarkan"]').text($(this).data("out-quantity"));
   $('[data-holder="span-tanggal"]').text($(this).data("tanggal"));
 });
+// === Code untuk modal delete BPP [end]
+
+// === Code untuk modal delete BPP
+$('.btn-detail-bpp').click(function(e) {
+  const data = $(this).data('detail-bpp');
+  console.log(data);
+  const $modalDetail = $('#modal_detail');
+  
+  $modalDetail.find('[data-holder="span-no"]').text(data.no);
+  $modalDetail.find('[data-holder="span-no-history"]').text(data.bpp_history_nomor);
+  $modalDetail.find('[data-holder="span-request-quantity"]').text(data.request_quantity);
+  $modalDetail.find('[data-holder="span-request-unit"]').text(data.request_unit);
+  $modalDetail.find('[data-holder="span-kode-barang"]').text(`${data.type_name} type_code(${data.type_code}) serial=(${data.device_serial})`);
+  $modalDetail.find('[data-holder="span-uraian"]').text(data.request_description);
+  $modalDetail.find('[data-holder="span-out-quantity"]').text(data.out_quantity);
+  $modalDetail.find('[data-holder="span-tanggal"]').text(data.created_at);
+});
+// === Code untuk modal delete BPP
+
 
 // == create new bpp history (modal)
 $("#btn_create_bpp_history").click(function (e) {
   // alert('create new bpp history');
   $("#form_create_bpp_history").submit();
 });
+
+// == Select report tanggal | bulan untuk isi query parameter
+$('#select_report_bpp_tanggal').on('change', function(e) {
+  console.log(e.target.value);
+  $('#btn_show_report_bpp_tanggal').attr('href', `reports/bpp_history.php?jenis=bpp&tanggal=${e.target.value}`);
+}) 
+$('#select_report_bpp_bulan').on('change', function(e) {
+  console.log(e.target.value);
+  $('#btn_show_report_bpp_bulan').attr('href', `reports/bpp_history.php?jenis=bpp&bulan=${e.target.value}`);
+}) 
+$('#select_report_bpp_tahun').on('change', function(e) {
+  console.log(e.target.value);
+  $('#btn_show_report_bpp_tahun').attr('href', `reports/bpp_history.php?jenis=bpp&tahun=${e.target.value}`);
+}) 
+// search_contains

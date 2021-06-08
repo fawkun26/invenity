@@ -1,0 +1,3 @@
+Time : 11:08:46
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM device_list INNER JOIN device_type USING(type_id) WHERE device_id in(3,5)' at line 1
+Raw SQL : SELECT device_id, device_serial, type_name, type_code,  FROM device_list INNER JOIN device_type USING(type_id) WHERE device_id in(3,5)
